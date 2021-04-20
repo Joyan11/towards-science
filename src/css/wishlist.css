@@ -1,0 +1,11 @@
+.watchlist-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-left: 7rem;
+}
+
+.watchlist-container {
+  margin-left: 5rem;
+  margin-top: 3rem;
+}

@@ -1,0 +1,55 @@
+:root {
+  --light-gray: #525357;
+}
+
+.route-link {
+  text-decoration: none;
+}
+
+.nav {
+  position: sticky;
+  background-color: #fff;
+  color: #000 !important;
+  top: 0;
+  box-shadow: 0 0 11px 0 rgb(0 0 0 / 75%);
+  z-index: 1;
+}
+
+.link {
+  text-decoration: none;
+  color: black !important;
+}
+
+main {
+  height: 100vh;
+  /* background-color: #181818; */
+
+  background-color: rgba(0, 0, 0, 0.05);
+  overflow-y: auto;
+}
+
+.nav--logo p {
+  font-family: "Train One";
+  color: #20639b;
+  font-size: 3rem;
+  letter-spacing: 0px;
+}
+
+.video-card {
+  box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.empty-text {
+  color: var(--light-gray);
+  margin-bottom: 2rem;
+  font-size: 6rem;
+}
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}

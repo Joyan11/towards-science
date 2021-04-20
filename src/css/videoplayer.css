@@ -1,0 +1,47 @@
+.video-player-section {
+  max-width: 1100px;
+  margin-top: 2rem;
+  margin: 2rem auto 0 auto;
+}
+
+.video-heading {
+  margin-top: 1.4rem;
+}
+
+.player-btn-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  color: var(--light-gray);
+}
+
+.player-icon-set {
+  /* padding-top: 1.6rem; */
+  padding-left: 1.6rem;
+  cursor: pointer;
+}
+
+.player-icon-set ion-icon {
+  font-size: 2rem;
+}
+.player-button-text {
+  padding-top: 0.3rem;
+  padding-left: 0.3rem;
+  font-weight: 700;
+  padding-bottom: 0;
+}
+
+.btn--icon {
+  padding-right: 0px;
+}
+
+.video-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.video-category p {
+  font-weight: 700;
+  font-size: 2rem;
+}

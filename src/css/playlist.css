@@ -1,0 +1,55 @@
+.card--body {
+  position: relative;
+}
+
+.playlist-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 5rem;
+  justify-content: center;
+}
+
+.playlist-wrapper {
+  margin-left: 7rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.playlist-container {
+  margin-top: 2rem;
+}
+
+.playlist-container:nth-child(even) {
+  margin-left: 2rem;
+}
+
+.playlist-card {
+  margin-left: 5rem;
+  margin-top: 2rem;
+}
+
+.playlist-card-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 3rem;
+  margin-left: 7rem;
+}
+
+.card--horizontal {
+  max-width: 100%;
+  width: 50rem;
+}
+
+.playlist-delete .card--dismiss {
+  color: #000;
+}
+
+.card--l.card--image {
+  max-width: 32rem;
+  height: auto;
+}
+
+.card--l .card--image {
+  position: relative;
+}

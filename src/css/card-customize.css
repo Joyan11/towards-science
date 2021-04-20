@@ -1,0 +1,19 @@
+.card--l .card--image {
+  max-width: 32rem;
+  height: auto;
+}
+
+.card--l .card--image {
+  position: relative;
+  height: 100%;
+}
+
+.card--text {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  color: #000;
+}
+
+.card--horizontal img {
+  max-width: 24rem !important;
+}
