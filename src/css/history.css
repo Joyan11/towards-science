@@ -1,9 +1,9 @@
-.likes-section {
+.history-section {
   display: flex;
   flex-wrap: wrap;
 }
 
-.likes-container {
+.history-container {
   margin-left: 5rem;
   margin-top: 3rem;
 }

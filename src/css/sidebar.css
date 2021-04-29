@@ -1,0 +1,51 @@
+.sidebar {
+  width: 100%;
+  max-width: 22rem;
+  height: 88vh;
+  position: sticky;
+  letter-spacing: 0.1rem;
+  font-size: 1.4rem;
+  top: 50px;
+  background-color: #fff;
+  transition: display 5s ease;
+}
+
+.sidebar-active {
+  display: block;
+}
+
+.sidebar-inactive {
+  display: none;
+}
+
+.sidebar--item {
+  font-weight: 700;
+  display: inline-block;
+  line-height: 6.5rem;
+  padding-left: 4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  width: 100%;
+  font-size: 2rem;
+  transition: background-color 0.5s ease;
+}
+
+.sidebar--item:hover {
+  background-color: #f3f3f3 !important;
+}
+
+.sidebar ul li ion-icon {
+  margin-top: 0.2rem;
+  margin-right: 1.6rem;
+}
+
+.sidebar .route-link {
+  color: #363333;
+}
+
+.ham-menu {
+  position: absolute;
+  font-size: 3rem;
+  top: 12px;
+  cursor: pointer;
+  display: block;
+}

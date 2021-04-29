@@ -1,15 +1,20 @@
 .video-section {
   display: flex;
-  flex-wrap: wrap;
   max-width: 100%;
-  justify-content: center;
-  padding-top: 5rem;
+  flex-direction: column;
+  margin-left: 2rem;
+}
+
+.video-page {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 1.6rem;
   overflow-y: hidden;
   overflow-x: hidden;
 }
 
 .videocard-container {
-  margin: 1.5rem;
+  margin: 1rem;
 }
 
 .card--image {

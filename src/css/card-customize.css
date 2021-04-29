@@ -16,4 +16,5 @@
 
 .card--horizontal img {
   max-width: 24rem !important;
+  height: 15rem;
 }

@@ -1,0 +1,17 @@
+.filter-button {
+  margin-right: 1rem;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+}
+
+.category-section {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.6rem;
+  margin-left: 1rem;
+}
+
+.active {
+  background-color: #606060;
+  color: #fff;
+}
