@@ -12,9 +12,9 @@ const initialState = {
 };
 
 export const PlaylistProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(playlistReducer, initialState);
+  const [state, dispatchplaylist] = useReducer(playlistReducer, initialState);
   return (
-    <playlistContext.Provider value={{ ...state, dispatch }}>
+    <playlistContext.Provider value={{ ...state, dispatchplaylist }}>
       {children}
     </playlistContext.Provider>
   );
