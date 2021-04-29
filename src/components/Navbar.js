@@ -1,11 +1,19 @@
 import React from "react";
 import Logo from "../assets/images/atom.svg";
 import { Link } from "react-router-dom";
+import { useGeneralContext } from "../contexts/general-context";
+
 export function Navbar() {
+  const { hamMenu, dispatchgeneral } = useGeneralContext();
   return (
     <>
       <nav className="nav nav-primary">
         <div className="nav--logo">
+          <span
+            className="ham-menu"
+            onClick={() => dispatchgeneral({ type: "MENU_TOGGLE" })}>
+            <ion-icon name="menu-outline"></ion-icon>
+          </span>
           <p>
             Towards
             <span>
@@ -14,28 +22,6 @@ export function Navbar() {
             Science
           </p>
         </div>
-        <ul className="list nav--list">
-          <li className="nav-item">
-            <Link to="/" className="link">
-              Home
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/playlists" className="link">
-              Playlists
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/liked-videos" className="link">
-              Liked videos
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link to="/watch-list" className="link">
-              Watch List
-            </Link>
-          </li>
-        </ul>
       </nav>
     </>
   );
