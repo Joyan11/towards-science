@@ -1,23 +1,30 @@
 import React from "react";
 import "../../css/videoplayer.css";
+import { useEffect } from "react";
 import { usePlaylist } from "../../contexts/playlist-context";
 import { useLike } from "../../contexts/like-context";
 import { useWatchList } from "../../contexts/watchlist-context";
+import { useGeneralContext } from "../../contexts/general-context";
 import { useParams } from "react-router-dom";
 import { data } from "../../data/data";
 import { PlaylistModal } from "./PlaylistModal";
 import ReactPlayer from "react-player";
 
 export const VideoPlayer = () => {
-  const { dispatch } = usePlaylist();
+  const { dispatchplaylist } = usePlaylist();
   const { likeList, dispatchlike } = useLike();
   const { watchList, dispatchwatchlist } = useWatchList();
+  const { dispatchgeneral } = useGeneralContext();
   const { id } = useParams();
 
   const getVideoDetails = () => {
     return data.filter((item) => item.id === id)[0];
   };
   const videoData = getVideoDetails();
+
+  useEffect(() => {
+    dispatchgeneral({ type: "ADD_TO_HISTORY", payload: videoData });
+  }, [videoData]);
 
   const handleLikeHandler = (videoData) => {
     if (likeList.some((item) => item.id === id)) {
@@ -47,6 +54,7 @@ export const VideoPlayer = () => {
         playing={true}
         url={`https://www.youtube.com/watch?v=${id}`}
       />
+
       <div className="video-heading">
         <p className=" text-m">{videoData.name}</p>
       </div>
@@ -79,7 +87,10 @@ export const VideoPlayer = () => {
           <div
             className="player-icon-set btn--icon btn--icon--front"
             onClick={() =>
-              dispatch({ type: "SHOW_PLAYLIST_MODAL", payload: videoData })
+              dispatchplaylist({
+                type: "SHOW_PLAYLIST_MODAL",
+                payload: videoData,
+              })
             }>
             <ion-icon className="player-icons" name="list-outline"></ion-icon>
             <div className="player-button-text">SAVE</div>
