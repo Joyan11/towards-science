@@ -7,30 +7,34 @@ export const PlaylistModal = () => {
     playList,
     inputPlaylistBox,
     showPlaylistModal,
-    dispatch,
+    dispatchplaylist,
   } = usePlaylist();
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      dispatch({ type: "DISPLAY_INPUT_BOX" });
-      dispatch({ type: "CREATE_PLAY_LIST", payload: text });
+      dispatchplaylist({ type: "DISPLAY_INPUT_BOX" });
+      text !== "" &&
+        dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: text });
+      setText("");
     }
   };
 
   const handleOnclick = () => {
-    dispatch({ type: "DISPLAY_INPUT_BOX" });
-    dispatch({ type: "CREATE_PLAY_LIST", payload: text });
+    dispatchplaylist({ type: "DISPLAY_INPUT_BOX" });
+    text !== "" &&
+      dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: text });
+    setText("");
   };
 
   const handlePlaylistCheckbox = (e) => {
     if (e.target.checked === true) {
-      dispatch({
+      dispatchplaylist({
         type: "SAVE_TO_PLAYLIST",
         playlistId: e.target.id,
         videoData: showPlaylistModal.videoData,
       });
     } else {
-      dispatch({
+      dispatchplaylist({
         type: "REMOVE_FROM_PLAYLIST",
         playlistId: e.target.id,
         videoData: showPlaylistModal.videoData.id,
@@ -61,7 +65,8 @@ export const PlaylistModal = () => {
         }`}>
         <div className="modal--window">
           <h1 className="modal--title">Playlist</h1>
-          <span onClick={() => dispatch({ type: "SHOW_PLAYLIST_MODAL" })}>
+          <span
+            onClick={() => dispatchplaylist({ type: "SHOW_PLAYLIST_MODAL" })}>
             <ion-icon name="close-outline" class="modal--icon"></ion-icon>
           </span>
 
@@ -100,8 +105,8 @@ export const PlaylistModal = () => {
           </div>
           <div className="modal--buttons">
             <button
-              className="btn btn-red"
-              onClick={() => dispatch({ type: "DISPLAY_INPUT_BOX" })}>
+              className="btn btn-secondary"
+              onClick={() => dispatchplaylist({ type: "DISPLAY_INPUT_BOX" })}>
               New
             </button>
           </div>
