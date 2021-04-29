@@ -1,7 +1,19 @@
+export const categories = [
+  "all",
+  "viruses",
+  "human mind",
+  "universe",
+  "insane engineering",
+  "climate change",
+  "biology",
+  "earth",
+  "others",
+];
+
 export const data = [
   {
-    id: "BtN-goy9VOY",
-    name: "The Coronavirus Explained & What You Should Do",
+    id: "OOJqHPfG7pA",
+    name: "What Coronavirus Symptoms Look Like, Day By Day",
     category: "viruses",
   },
   {
@@ -75,8 +87,18 @@ export const data = [
     category: "earth",
   },
   {
+    id: "LfpbRQIa_Zo",
+    name: "What Coronavirus Recovery Looks Like, Day By Day",
+    category: "viruses",
+  },
+  {
     id: "qk5PLwYvIqk",
     name: "Coming of Age in the Anthropocene",
     category: "universe",
+  },
+  {
+    id: "ldLBoErAhz4",
+    name: "The Last Time the Globe Warmed",
+    category: "climate change",
   },
 ];
