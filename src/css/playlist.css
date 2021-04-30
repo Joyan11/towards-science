@@ -4,9 +4,8 @@
 
 .playlist-section {
   max-width: 100%;
-  margin-left: 2rem;
-  padding-top: 5rem;
-  justify-content: center;
+  margin-left: 5rem;
+  margin-top: 3rem;
 }
 
 .playlist-wrapper {
@@ -25,14 +24,7 @@
 
 .playlist-card {
   margin-left: 5rem;
-  margin-top: 2rem;
-}
-
-.playlist-card-container {
-  display: flex;
-  flex-wrap: wrap;
   margin-top: 3rem;
-  margin-left: 7rem;
 }
 
 .card--horizontal {
@@ -51,4 +43,14 @@
 
 .card--l .card--image {
   position: relative;
+}
+
+.playlist-card-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.playlist-card-container {
+  margin-left: 5rem;
+  margin-top: 3rem;
 }
