@@ -1,6 +1,7 @@
 import React from "react";
 import "../../css/playlistmodal.css";
 import { usePlaylist } from "../../contexts/playlist-context";
+import { toastMessages } from "../../utils/toastMessages";
 export const PlaylistModal = () => {
   const [text, setText] = React.useState("");
   const {
@@ -33,12 +34,14 @@ export const PlaylistModal = () => {
         playlistId: e.target.id,
         videoData: showPlaylistModal.videoData,
       });
+      toastMessages("Video Added to Playlist");
     } else {
       dispatchplaylist({
         type: "REMOVE_FROM_PLAYLIST",
         playlistId: e.target.id,
         videoData: showPlaylistModal.videoData.id,
       });
+      toastMessages("Video Removed from Playlist");
     }
     console.log(
       playList

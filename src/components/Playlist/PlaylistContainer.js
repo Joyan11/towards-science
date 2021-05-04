@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import { usePlaylist } from "../../contexts/playlist-context";
+import { toastMessages } from "../../utils/toastMessages";
 export const PlaylistContainer = ({ playlist }) => {
   const { dispatchplaylist } = usePlaylist();
 
@@ -16,6 +17,14 @@ export const PlaylistContainer = ({ playlist }) => {
       return `http://sirigallery.com/static/asset/images/novideo.png`;
     }
   };
+
+  const deletePlaylist = (playlistid) => {
+    dispatchplaylist({
+      type: "DELETE_PLAYLIST",
+      payload: playlistid,
+    });
+    toastMessages("Playlist Deleated");
+  };
   return (
     <div className="playlist-container">
       <div key={playlist.id} className="card card--horizontal video-card">
@@ -25,12 +34,7 @@ export const PlaylistContainer = ({ playlist }) => {
         <div className="card--body">
           <span
             className="playlist-delete"
-            onClick={() =>
-              dispatchplaylist({
-                type: "DELETE_PLAYLIST",
-                payload: playlist.id,
-              })
-            }>
+            onClick={() => deletePlaylist(playlist.id)}>
             <ion-icon class="card--dismiss" name="trash-outline"></ion-icon>
           </span>
           <span className="card--title">{playlist.name}</span>

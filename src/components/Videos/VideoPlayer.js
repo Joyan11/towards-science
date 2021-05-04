@@ -9,6 +9,7 @@ import { useParams } from "react-router-dom";
 import { data } from "../../data/data";
 import { PlaylistModal } from "./PlaylistModal";
 import ReactPlayer from "react-player";
+import { toastMessages } from "../../utils/toastMessages";
 
 export const VideoPlayer = () => {
   const { dispatchplaylist } = usePlaylist();
@@ -29,8 +30,10 @@ export const VideoPlayer = () => {
   const handleLikeHandler = (videoData) => {
     if (likeList.some((item) => item.id === id)) {
       dispatchlike({ type: "REMOVE_FROM_LIKED", payload: videoData.id });
+      toastMessages("Video Removed from Likes");
     } else {
       dispatchlike({ type: "ADD_TO_LIKED", payload: videoData });
+      toastMessages("Video Added to Likes");
     }
   };
 
@@ -40,8 +43,10 @@ export const VideoPlayer = () => {
         type: "REMOVE_FROM_WATCHLIST",
         payload: videoData.id,
       });
+      toastMessages("Video Removed from Watch List");
     } else {
       dispatchwatchlist({ type: "ADD_TO_WATCHLIST", payload: videoData });
+      toastMessages("Video Added to Watch List");
     }
   };
 

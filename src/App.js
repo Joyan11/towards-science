@@ -1,6 +1,8 @@
 import "./App.css";
 import "./css/card-customize.css";
-import { Navbar } from "./components/Navbar";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+import { Navbar } from "./components/Navbar/Navbar";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Videos } from "./components/Videos/Videos";
 import { Playlist } from "./components/Playlist/Playlist";
@@ -27,6 +29,7 @@ function App() {
             <Route path=":id" element={<VideoPlayer />} />
           </Routes>
         </div>
+        <ToastContainer />
       </main>
     </div>
   );
