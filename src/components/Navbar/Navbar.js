@@ -1,10 +1,9 @@
 import React from "react";
-import Logo from "../assets/images/atom.svg";
-import { Link } from "react-router-dom";
-import { useGeneralContext } from "../contexts/general-context";
+import Logo from "../../assets/images/atom.svg";
+import { useGeneralContext } from "../../contexts/general-context";
 
 export function Navbar() {
-  const { hamMenu, dispatchgeneral } = useGeneralContext();
+  const { dispatchgeneral } = useGeneralContext();
   return (
     <>
       <nav className="nav nav-primary">
