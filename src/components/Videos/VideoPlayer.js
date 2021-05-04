@@ -45,6 +45,22 @@ export const VideoPlayer = () => {
     }
   };
 
+  const watchListToggle = (itemid) => {
+    if (watchList.some((item) => item.id === itemid)) {
+      return "watchlist-active";
+    } else {
+      return undefined;
+    }
+  };
+
+  const likeListToggle = (itemid) => {
+    if (likeList.some((item) => item.id === itemid)) {
+      return "likelist-active";
+    } else {
+      return undefined;
+    }
+  };
+
   return (
     <div className="video-player-section">
       <ReactPlayer
@@ -69,14 +85,18 @@ export const VideoPlayer = () => {
             <div className="player-button-text">SHARE</div>
           </div> */}
           <div
-            className="player-icon-set btn--icon btn--icon--front"
+            className={`player-icon-set btn--icon btn--icon--front ${watchListToggle(
+              videoData.id
+            )}`}
             onClick={() => handleWatchlistHandler(videoData)}>
             <ion-icon name="time" className="player-icons"></ion-icon>
             <div className="player-button-text">WATCH LATER</div>
           </div>
 
           <div
-            className="player-icon-set  btn--icon btn--icon--front"
+            className={`player-icon-set  btn--icon btn--icon--front ${likeListToggle(
+              videoData.id
+            )}`}
             onClick={() => handleLikeHandler(videoData)}>
             <ion-icon
               name="thumbs-up-sharp"

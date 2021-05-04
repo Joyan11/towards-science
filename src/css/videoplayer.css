@@ -45,3 +45,11 @@
   font-weight: 700;
   font-size: 2rem;
 }
+
+.watchlist-active {
+  color: #20639b;
+}
+
+.likelist-active {
+  color: #20639b;
+}
