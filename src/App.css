@@ -58,3 +58,12 @@ main {
   align-items: center;
   height: 100vh;
 }
+
+.page-heading {
+  margin-left: 5rem;
+  margin-top: 3rem;
+}
+
+.playlist-section .page-heading {
+  margin: 0;
+}
