@@ -1,11 +1,11 @@
 .sidebar {
   width: 100%;
   max-width: 22rem;
-  height: 100vh;
+  height: 88vh;
   position: sticky;
   letter-spacing: 0.1rem;
   font-size: 1.4rem;
-  top: 0;
+  top: 50px;
   background-color: #fff;
 }
 
@@ -52,6 +52,7 @@
 @media (max-width: 786px) {
   .sidebar {
     position: absolute;
+    top: 0;
     z-index: 3;
     height: 100%;
   }
