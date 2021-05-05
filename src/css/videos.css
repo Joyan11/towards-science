@@ -13,7 +13,7 @@
   overflow-x: hidden;
 }
 
-.videocard-container {
+.video-page .card {
   margin: 1rem;
 }
 
@@ -32,4 +32,28 @@
 .card--text {
   font-weight: 700;
   color: var(--light-gray) !important;
+}
+
+@media (max-width: 768px) {
+  .video-section {
+    margin: 0;
+  }
+  .video-page .card {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .video-page .card--image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .video-page .link {
+    width: 100%;
+  }
+
+  .video-page img {
+    width: 100%;
+    margin: 0;
+  }
 }

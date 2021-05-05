@@ -33,6 +33,8 @@ main {
 }
 
 .nav--logo p {
+  display: flex;
+  align-items: center;
   font-family: "Train One";
   color: #20639b;
   font-size: 3rem;
@@ -60,10 +62,27 @@ main {
 }
 
 .page-heading {
-  margin-left: 5rem;
-  margin-top: 3rem;
+  margin-left: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .playlist-section .page-heading {
   margin: 0;
+}
+
+@media (max-width: 786px) {
+  .main-section {
+    flex-direction: column;
+  }
+
+  .nav--logo p {
+    font-size: 2rem;
+  }
+
+  .page-heading {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }

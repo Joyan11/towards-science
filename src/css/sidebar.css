@@ -1,7 +1,7 @@
 .sidebar {
   width: 100%;
   max-width: 22rem;
-  height: 88vh;
+  height: 91vh;
   position: sticky;
   letter-spacing: 0.1rem;
   font-size: 1.4rem;
@@ -48,4 +48,20 @@
   top: 12px;
   cursor: pointer;
   display: block;
+}
+
+@media (max-width: 786px) {
+  .sidebar {
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+  }
+
+  .sidebar-active {
+    display: none;
+  }
+
+  .sidebar-inactive {
+    display: block;
+  }
 }

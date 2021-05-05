@@ -16,6 +16,11 @@
 
 .playlist-container {
   margin-top: 2rem;
+  width: 100%;
+}
+
+.playlist-section .card--horizontal .card--title {
+  font-size: 2rem;
 }
 
 .playlist-container:nth-child(even) {
@@ -36,21 +41,29 @@
   color: #000;
 }
 
-.card--l.card--image {
-  max-width: 32rem;
-  height: auto;
-}
-
-.card--l .card--image {
-  position: relative;
-}
-
 .playlist-card-section {
   display: flex;
   flex-wrap: wrap;
 }
 
-.playlist-card-container {
-  margin-left: 5rem;
-  margin-top: 3rem;
+@media (max-width: 786px) {
+  .playlist-section {
+    margin: 0;
+  }
+  .playlist-container:nth-child(even) {
+    margin-left: 0;
+  }
+
+  .playlist-section .card--horizontal {
+    width: 100%;
+  }
+  .playlist-section .card--horizontal .btn {
+    padding: 0.6rem 0.8rem;
+  }
+
+  .playlist-section .page-heading {
+    margin-left: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 }

@@ -5,13 +5,21 @@
 }
 
 .category-section {
+  max-width: 100%;
   display: flex;
   justify-content: flex-start;
   margin-top: 1.6rem;
-  margin-left: 1rem;
+  margin-left: 0.7rem;
+  overflow-y: scroll;
 }
 
 .active {
   background-color: #606060;
   color: #fff;
+}
+
+@media (max-width: 768px) {
+  .filter-button {
+    min-width: fit-content;
+  }
 }

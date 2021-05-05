@@ -39,3 +39,9 @@ input[type="checkbox"] {
 .modal-hide {
   display: none;
 }
+
+@media (max-width: 768px) {
+  .modal--window {
+    max-width: 90%;
+  }
+}

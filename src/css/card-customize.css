@@ -18,3 +18,22 @@
   max-width: 24rem !important;
   height: 15rem;
 }
+
+@media (max-width: 786px) {
+  .card--l .card--image {
+    width: 100%;
+    height: auto;
+  }
+
+  .card--l {
+    width: 100% !important;
+  }
+
+  .card--title {
+    font-size: 2rem !important;
+  }
+
+  .card--text {
+    font-size: 1.7rem !important;
+  }
+}
