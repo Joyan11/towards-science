@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../../assets/images/atom.svg";
 import { useGeneralContext } from "../../contexts/general-context";
 
@@ -14,11 +15,13 @@ export function Navbar() {
             <ion-icon name="menu-outline"></ion-icon>
           </span>
           <p>
-            Towards
-            <span>
-              <img alt="towards science logo" srcSet={Logo} />
-            </span>
-            Science
+            <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+              Towards
+              <span>
+                <img alt="towards science logo" srcSet={Logo} />
+              </span>
+              Science
+            </Link>
           </p>
         </div>
       </nav>
