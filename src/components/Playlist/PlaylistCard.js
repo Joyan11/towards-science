@@ -1,4 +1,5 @@
 import React from "react";
+import "../../css/video-list-section.css";
 import { usePlaylist } from "../../contexts/playlist-context";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { toastMessages } from "../../utils/toastMessages";
@@ -20,32 +21,30 @@ export const PlaylistCard = () => {
   return (
     <div>
       <PageHeading name={`Playlist/${playlistData.name}`} />
-      <div className="playlist-card-section">
+      <div className="video-list-section">
         {playlistData.list.map((playlistitem) => {
           return (
-            <div className="playlist-card-container">
-              <div
-                kay={playlistitem.id}
-                className="card card--verticle card--l video-card">
-                <figure className="card--image">
-                  <span onClick={() => deleteFromPlaylist(id, playlistitem.id)}>
-                    {" "}
-                    <ion-icon
-                      class="card--dismiss"
-                      name="close-circle"></ion-icon>
-                  </span>{" "}
-                  <Link to={`/${playlistitem.id}`} className="link">
-                    <img
-                      src={`https://img.youtube.com/vi/${playlistitem.id}/mqdefault.jpg`}
-                      alt={playlistitem.name}
-                    />{" "}
-                  </Link>
-                </figure>
-                <div className="card--body">
+            <div
+              kay={playlistitem.id}
+              className="card card--verticle card--l video-card">
+              <figure className="card--image">
+                <span onClick={() => deleteFromPlaylist(id, playlistitem.id)}>
                   {" "}
-                  <span clasNames="card--title">{playlistitem.name}</span>
-                  <p className="card--text"> {playlistitem.category} </p>
-                </div>
+                  <ion-icon
+                    class="card--dismiss"
+                    name="close-circle"></ion-icon>
+                </span>{" "}
+                <Link to={`/${playlistitem.id}`} className="link">
+                  <img
+                    src={`https://img.youtube.com/vi/${playlistitem.id}/mqdefault.jpg`}
+                    alt={playlistitem.name}
+                  />{" "}
+                </Link>
+              </figure>
+              <div className="card--body">
+                {" "}
+                <span clasNames="card--title">{playlistitem.name}</span>
+                <p className="card--text"> {playlistitem.category} </p>
               </div>
             </div>
           );

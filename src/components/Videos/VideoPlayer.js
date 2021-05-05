@@ -68,13 +68,16 @@ export const VideoPlayer = () => {
 
   return (
     <div className="video-player-section">
-      <ReactPlayer
-        width="1100px"
-        height="550px"
-        controls
-        playing={true}
-        url={`https://www.youtube.com/watch?v=${id}`}
-      />
+      <div className="player">
+        <ReactPlayer
+          className="react-player"
+          width="100%"
+          height="100%"
+          controls
+          playing={true}
+          url={`https://www.youtube.com/watch?v=${id}`}
+        />
+      </div>
 
       <div className="video-heading">
         <p className=" text-m">{videoData.name}</p>

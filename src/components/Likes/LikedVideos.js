@@ -1,5 +1,5 @@
 import React from "react";
-import "../../css/likes.css";
+import "../../css/video-list-section.css";
 import { LikedCard } from "./LikedCard";
 import { useLike } from "../../contexts/like-context";
 import { PageHeading } from "../PageHeading";
@@ -8,7 +8,7 @@ export function LikedVideos() {
   return (
     <div>
       <PageHeading name="Likes" />
-      <div className="likes-section">
+      <div className="video-list-section">
         {likeList.map((item) => (
           <LikedCard likelist={item} />
         ))}
