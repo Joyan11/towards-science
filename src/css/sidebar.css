@@ -9,10 +9,6 @@
   background-color: #fff;
 }
 
-.sidebar ul {
-  margin-top: 4rem;
-}
-
 .sidebar-active {
   display: block;
 }
@@ -60,6 +56,9 @@
     height: 100%;
   }
 
+  .sidebar ul {
+    margin-top: 4rem;
+  }
   .sidebar-active {
     display: none;
   }
