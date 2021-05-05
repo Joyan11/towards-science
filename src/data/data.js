@@ -17,8 +17,8 @@ export const data = [
     category: "viruses",
   },
   {
-    id: "4b33NTAuF5E",
-    name: "Can You Upload Your Mind & Live Forever?",
+    id: "CkMh6xdJNeM",
+    name: "How Social Media Is Rewiring Our Brains",
     category: "human mind",
   },
   {
@@ -32,8 +32,8 @@ export const data = [
     category: "insane engineering",
   },
   {
-    id: "9eUIhvGKKiI",
-    name: "What Happens When You Go To Sleep High?",
+    id: "LJbrLSU2Tk4",
+    name: "What Does LSD Do To Your Brain? | Earth Lab",
     category: "others",
   },
   {
@@ -42,8 +42,8 @@ export const data = [
     category: "insane engineering",
   },
   {
-    id: "wNDGgL73ihY",
-    name: "The Beginning of Everything -- The Big Bang",
+    id: "TBikbn5XJhg",
+    name: "Timelapse Of The Entire Universe",
     category: "universe",
   },
   {
@@ -52,8 +52,8 @@ export const data = [
     category: "human mind",
   },
   {
-    id: "wbR-5mHI6bo",
-    name: "is It Too Late To Stop Climate Change? ",
+    id: "dBviC797sTk",
+    name: "Why Planting Trees Can No Longer Save Our Atmosphere",
     category: "climate change",
   },
   {
@@ -100,5 +100,20 @@ export const data = [
     id: "ldLBoErAhz4",
     name: "The Last Time the Globe Warmed",
     category: "climate change",
+  },
+  {
+    id: "EwoViJSvLuw",
+    name: "What Makes The F-22 So Special?",
+    category: "insane engineering",
+  },
+  {
+    id: "lfo8XHGFAIQ",
+    name: "Can We Terraform the Sahara to Stop Climate Change?",
+    category: "climate change",
+  },
+  {
+    id: "JGXi_9A__Vc",
+    name: "Everything You Need to Know About Planet Earth",
+    category: "earth",
   },
 ];
