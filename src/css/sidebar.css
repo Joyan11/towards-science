@@ -1,13 +1,16 @@
 .sidebar {
   width: 100%;
   max-width: 22rem;
-  height: 91vh;
+  height: 100vh;
   position: sticky;
   letter-spacing: 0.1rem;
   font-size: 1.4rem;
-  top: 50px;
+  top: 0;
   background-color: #fff;
-  transition: display 5s ease;
+}
+
+.sidebar ul {
+  margin-top: 4rem;
 }
 
 .sidebar-active {
