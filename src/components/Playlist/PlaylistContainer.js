@@ -14,7 +14,7 @@ export const PlaylistContainer = ({ playlist }) => {
     if (list.length !== 0) {
       return `https://img.youtube.com/vi/${playListImage(list)}/mqdefault.jpg`;
     } else {
-      return `http://sirigallery.com/static/asset/images/novideo.png`;
+      return `http://fenceup.in/urtexsolutions/img/default2.png`;
     }
   };
 
