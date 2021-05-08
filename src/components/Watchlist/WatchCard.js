@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useWatchList } from "../../contexts/watchlist-context";
+import { thumbnail } from "../../utils/thumbnail";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const WatchCard = ({ watchlist }) => {
@@ -22,10 +23,7 @@ export const WatchCard = ({ watchlist }) => {
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}
         <Link to={`/${id}`} className="link">
-          <img
-            src={`https://img.youtube.com/vi/${id}/mqdefault.jpg`}
-            alt={name}
-          />
+          <img src={thumbnail(id)} alt={name} />
         </Link>
       </figure>
       <div className="card--body">

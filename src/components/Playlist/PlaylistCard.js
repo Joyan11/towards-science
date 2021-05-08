@@ -4,6 +4,7 @@ import { usePlaylist } from "../../contexts/playlist-context";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { toastMessages } from "../../utils/toastMessages";
 import { PageHeading } from "../PageHeading";
+import { thumbnail } from "../../utils/thumbnail";
 export const PlaylistCard = () => {
   const { playList, dispatchplaylist } = usePlaylist();
   const { id } = useParams();
@@ -36,7 +37,7 @@ export const PlaylistCard = () => {
                 </span>{" "}
                 <Link to={`/${playlistitem.id}`} className="link">
                   <img
-                    src={`https://img.youtube.com/vi/${playlistitem.id}/mqdefault.jpg`}
+                    src={thumbnail(playlistitem.id)}
                     alt={playlistitem.name}
                   />{" "}
                 </Link>

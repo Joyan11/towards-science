@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useGeneralContext } from "../../contexts/general-context";
+import { thumbnail } from "../../utils/thumbnail";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const HistoryCard = ({ history }) => {
@@ -21,10 +22,7 @@ export const HistoryCard = ({ history }) => {
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}
         <Link to={`/${id}`} className="link">
-          <img
-            src={`https://img.youtube.com/vi/${id}/mqdefault.jpg`}
-            alt={name}
-          />
+          <img src={thumbnail(id)} alt={name} />
         </Link>
       </figure>
       <div className="card--body">
