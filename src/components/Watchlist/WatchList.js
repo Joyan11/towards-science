@@ -6,6 +6,7 @@ import { PageHeading } from "../PageHeading";
 
 export const WatchList = () => {
   const { watchList } = useWatchList();
+  console.log(watchList);
 
   return (
     <div>

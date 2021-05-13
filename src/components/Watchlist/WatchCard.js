@@ -18,7 +18,7 @@ export const WatchCard = ({ watchlist }) => {
   return (
     <div key={id} className="card card--verticle card--l video-card">
       <figure className="card--image">
-        <span onClick={() => dispatchwatchlist(id)}>
+        <span onClick={() => deleteFromWatchlist(id)}>
           {" "}
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}
