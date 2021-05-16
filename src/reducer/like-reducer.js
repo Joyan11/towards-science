@@ -1,14 +1,21 @@
 export const likeReducer = (state, action) => {
   switch (action.type) {
-    case "ADD_TO_LIKED":
+    case "SAVE_LIKES_ID":
       return {
         ...state,
-        likeList: [...state.likeList, action.payload],
+        likeId: action.payload,
       };
-    case "REMOVE_FROM_LIKED":
+    case "ADD_TO_LIKES":
       return {
         ...state,
-        likeList: state.likeList.filter((item) => item.id !== action.payload),
+        likeList: action.payload,
       };
+    case "REMOVE_FROM_LIKES":
+      return {
+        ...state,
+        likeList: state.likeList.filter((item) => item._id !== action.payload),
+      };
+    default:
+      return state;
   }
 };

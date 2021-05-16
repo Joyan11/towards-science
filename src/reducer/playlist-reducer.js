@@ -15,47 +15,30 @@ export const playlistReducer = (state, action) => {
         ...state,
         inputPlaylistBox: state.inputPlaylistBox === false ? true : false,
       };
+    case "SAVE_PLAYLIST_ID":
+      return {
+        ...state,
+        playlistId: action.payload,
+      };
     case "CREATE_PLAY_LIST":
       return {
         ...state,
-        playList: [
-          ...state.playList,
-          { id: `${uuid()}`, name: action.payload, list: [] },
-        ],
+        playList: action.payload,
       };
     case "SAVE_TO_PLAYLIST":
-      const newObj = state.playList.map((item) => {
-        if (item.id === action.playlistId) {
-          return {
-            ...item,
-            list: [...item.list, action.videoData],
-          };
-        } else {
-          return item;
-        }
-      });
       return {
         ...state,
-        playList: newObj,
+        playList: action.payload,
       };
     case "REMOVE_FROM_PLAYLIST":
       return {
         ...state,
-        playList: state.playList.map((item) => {
-          if (item.id === action.playlistId) {
-            return {
-              ...item,
-              list: item.list.filter((item) => item.id !== action.videoData),
-            };
-          } else {
-            return item;
-          }
-        }),
+        playList: action.payload,
       };
     case "DELETE_PLAYLIST":
       return {
         ...state,
-        playList: state.playList.filter((item) => item.id !== action.payload),
+        playList: action.payload,
       };
     default:
       return state;

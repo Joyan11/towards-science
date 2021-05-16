@@ -1,29 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { removeFromWatchlist } from "../../api/watchlist/removeFromWatchlist";
 import { useWatchList } from "../../contexts/watchlist-context";
 import { thumbnail } from "../../utils/thumbnail";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const WatchCard = ({ watchlist }) => {
-  const { dispatchwatchlist } = useWatchList();
-  const { id, name, category } = watchlist;
+  const { watchlistId, dispatchwatchlist } = useWatchList();
+  const { _id, name, category } = watchlist;
 
-  const deleteFromWatchlist = (id) => {
-    dispatchwatchlist({
-      type: "REMOVE_FROM_WATCHLIST",
-      payload: id,
-    });
-    toastMessages("Video removed from Watch List");
-  };
   return (
-    <div key={id} className="card card--verticle card--l video-card">
+    <div className="card card--verticle card--l video-card">
       <figure className="card--image">
-        <span onClick={() => deleteFromWatchlist(id)}>
+        <span
+          onClick={() =>
+            removeFromWatchlist(watchlistId, _id, dispatchwatchlist)
+          }>
           {" "}
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}
-        <Link to={`/${id}`} className="link">
-          <img src={thumbnail(id)} alt={name} />
+        <Link to={`/${_id}`} className="link">
+          <img src={thumbnail(_id)} alt={name} />
         </Link>
       </figure>
       <div className="card--body">

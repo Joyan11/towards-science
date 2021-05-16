@@ -6,7 +6,7 @@ import { toastMessages } from "../../utils/toastMessages";
 
 export const LikedCard = ({ likelist }) => {
   const { dispatchlike } = useLike();
-  const { id, name, category } = likelist;
+  const { _id, name, category } = likelist;
 
   const deleteFromLikelist = (id) => {
     dispatchlike({
@@ -17,14 +17,14 @@ export const LikedCard = ({ likelist }) => {
   };
 
   return (
-    <div key={id} className="card card--verticle card--l video-card">
+    <div className="card card--verticle card--l video-card">
       <figure className="card--image">
-        <span onClick={() => deleteFromLikelist(id)}>
+        <span onClick={() => deleteFromLikelist(_id)}>
           {" "}
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}
-        <Link to={`/${id}`} className="link">
-          <img src={thumbnail(id)} alt={name} />
+        <Link to={`/${_id}`} className="link">
+          <img src={thumbnail(_id)} alt={name} />
         </Link>
       </figure>
       <div className="card--body">

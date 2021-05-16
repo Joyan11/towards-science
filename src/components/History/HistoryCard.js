@@ -1,28 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { removeFromHistory } from "../../api/history/removeFromHistory";
 import { useGeneralContext } from "../../contexts/general-context";
 import { thumbnail } from "../../utils/thumbnail";
-import { toastMessages } from "../../utils/toastMessages";
 
 export const HistoryCard = ({ history }) => {
-  const { dispatchgeneral } = useGeneralContext();
-  const { id, name, category } = history;
+  const { historyId, dispatchgeneral } = useGeneralContext();
+  const { _id, name, category } = history;
 
-  const deleteFromHistory = (id) => {
-    dispatchgeneral({
-      type: "REMOVE_FROM_HISTORY",
-      payload: id,
-    });
-    toastMessages("Video Removed From History");
-  };
   return (
-    <div key={id} className="card card--verticle card--l video-card">
+    <div className="card card--verticle card--l video-card">
       <figure className="card--image">
-        <span onClick={() => deleteFromHistory(id)}>
+        <span
+          onClick={() => removeFromHistory(historyId, _id, dispatchgeneral)}>
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}
-        <Link to={`/${id}`} className="link">
-          <img src={thumbnail(id)} alt={name} />
+        <Link to={`/${_id}`} className="link">
+          <img src={thumbnail(_id)} alt={name} />
         </Link>
       </figure>
       <div className="card--body">

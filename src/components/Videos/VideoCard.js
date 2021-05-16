@@ -3,12 +3,12 @@ import { Link } from "react-router-dom";
 import { thumbnail } from "../../utils/thumbnail";
 
 export function VideoCard({ videos }) {
-  const { id, name, category } = videos;
+  const { _id, name, category } = videos;
   return (
     <div className="card card--verticle card--m video-card">
-      <Link to={`/${id}`} className="link">
+      <Link to={`/${_id}`} className="link">
         <figure className="card--image">
-          <img src={thumbnail(id)} alt="{name}" />
+          <img src={thumbnail(_id)} alt="{name}" />
         </figure>
         <div className="card--body">
           <p className="card--title">{name}</p>

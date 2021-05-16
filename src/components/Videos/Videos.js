@@ -4,9 +4,11 @@ import { VideoCard } from "./VideoCard";
 import { PlaylistModal } from "./PlaylistModal";
 import { useGeneralContext } from "../../contexts/general-context";
 import { CategoryBar } from "../Categories/CategoryBar";
+import { useVideoData } from "../../hooks/useVideoData/useVideoData";
+import { Puff } from "../Loader/Puff";
 export function Videos() {
-  // console.log(showPlaylistModal);
-  const { videos, videoFilter } = useGeneralContext();
+  useVideoData();
+  const { videos, videoFilter, loader } = useGeneralContext();
 
   const filterByCategory = (videos, videofilter) => {
     if (videofilter === "all") {
@@ -17,16 +19,16 @@ export function Videos() {
   };
 
   const filteredItems = filterByCategory(videos, videoFilter);
-  console.log(filteredItems);
+
   return (
     <section className="video-section">
       <CategoryBar />
       <div className="video-page">
+        {loader && <Puff />}
         {filteredItems.map((videos) => {
-          return <VideoCard key={videos.id} videos={videos} />;
+          return <VideoCard key={videos._id} videos={videos} />;
         })}
       </div>
-
       <PlaylistModal />
     </section>
   );

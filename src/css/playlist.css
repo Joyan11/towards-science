@@ -16,7 +16,6 @@
 
 .playlist-container {
   margin-top: 2rem;
-  width: 100%;
 }
 
 .playlist-section .card--horizontal .card--title {
@@ -49,6 +48,10 @@
 @media (max-width: 786px) {
   .playlist-section {
     margin: 0;
+  }
+
+  .playlist-container {
+    width: 100%;
   }
   .playlist-container:nth-child(even) {
     margin-left: 0;

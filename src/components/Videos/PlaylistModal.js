@@ -1,11 +1,16 @@
 import React from "react";
+import axios from "axios";
 import "../../css/playlistmodal.css";
 import { usePlaylist } from "../../contexts/playlist-context";
-import { toastMessages } from "../../utils/toastMessages";
+import { createPlaylist } from "../../api/playlist/createPlaylist";
+import { addToPlaylist } from "../../api/playlist/addToPlaylist";
+import { removeFromPlaylist } from "../../api/playlist/removeFromPlaylist";
+
 export const PlaylistModal = () => {
   const [text, setText] = React.useState("");
   const {
     playList,
+    playlistId,
     inputPlaylistBox,
     showPlaylistModal,
     dispatchplaylist,
@@ -13,50 +18,32 @@ export const PlaylistModal = () => {
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
-      dispatchplaylist({ type: "DISPLAY_INPUT_BOX" });
-      text !== "" &&
-        dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: text });
-      setText("");
+      handleOnclick();
     }
   };
 
   const handleOnclick = () => {
     dispatchplaylist({ type: "DISPLAY_INPUT_BOX" });
-    text !== "" &&
-      dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: text });
+    text !== "" && createPlaylist(playlistId, dispatchplaylist, text);
     setText("");
   };
 
-  const handlePlaylistCheckbox = (e) => {
+  const handlePlaylistCheckbox = (e, playlistId) => {
+    let listId = e.target.id;
     if (e.target.checked === true) {
-      dispatchplaylist({
-        type: "SAVE_TO_PLAYLIST",
-        playlistId: e.target.id,
-        videoData: showPlaylistModal.videoData,
-      });
-      toastMessages("Video Added to Playlist");
+      let videoData = showPlaylistModal.videoData;
+      addToPlaylist(playlistId, listId, dispatchplaylist, videoData);
     } else {
-      dispatchplaylist({
-        type: "REMOVE_FROM_PLAYLIST",
-        playlistId: e.target.id,
-        videoData: showPlaylistModal.videoData.id,
-      });
-      toastMessages("Video Removed from Playlist");
+      let videoId = showPlaylistModal.videoData._id;
+      removeFromPlaylist(playlistId, listId, videoId, dispatchplaylist);
     }
-    console.log(
-      playList
-        .filter((item) => item.id === e.target.id)[0]
-        .list.some((item) => {
-          return item.id === showPlaylistModal.videoData.id ? true : false;
-        })
-    );
   };
 
   const itemChecked = (id) => {
     return playList
-      .filter((item) => item.id === id)[0]
+      .filter((item) => item._id === id)[0]
       .list.some((item) => {
-        return item.id === showPlaylistModal.videoData.id ? true : false;
+        return item._id === showPlaylistModal.videoData._id ? true : false;
       });
   };
 
@@ -92,16 +79,17 @@ export const PlaylistModal = () => {
             )}
             {playList.map((item) => {
               return (
-                <div key={item.id} className="playlist-names">
+                <div key={item._id} className="playlist-names">
                   <input
                     type="checkbox"
                     name="playlist-item"
                     className="playlist-checkbox"
-                    id={item.id}
-                    checked={itemChecked(item.id)}
-                    onChange={(e) => handlePlaylistCheckbox(e)}
+                    id={item._id}
+                    checked={itemChecked(item._id)}
+                    onChange={(e) => handlePlaylistCheckbox(e, playlistId)}
                   />
-                  <label htmlFor={item.id}>{item.name}</label>
+
+                  <label htmlFor={item._id}>{item.name}</label>
                 </div>
               );
             })}

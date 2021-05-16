@@ -1,43 +1,60 @@
 import React from "react";
 import "../../css/video-list-section.css";
 import { usePlaylist } from "../../contexts/playlist-context";
-import { useParams, Link, Navigate } from "react-router-dom";
-import { toastMessages } from "../../utils/toastMessages";
+import { useParams, Link } from "react-router-dom";
 import { PageHeading } from "../PageHeading";
 import { thumbnail } from "../../utils/thumbnail";
-export const PlaylistCard = () => {
-  const { playList, dispatchplaylist } = usePlaylist();
-  const { id } = useParams();
-  const playlistData = playList.find((item) => item.id === id);
+import { useSinglelistData } from "../../hooks/usePlaylistData/useSinglistData";
+import { useGeneralContext } from "../../contexts/general-context";
+import { Puff } from "../Loader/Puff";
+import { removeFromPlaylist } from "../../api/playlist/removeFromPlaylist";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
-  const deleteFromPlaylist = (playlistid, playlistitemid) => {
-    dispatchplaylist({
-      type: "REMOVE_FROM_PLAYLIST",
-      playlistId: playlistid,
-      videoData: playlistitemid,
-    });
-    toastMessages("Video Removed from Playlist");
+export const PlaylistCard = () => {
+  const { playList, playlistId, dispatchplaylist } = usePlaylist();
+  const { loader } = useGeneralContext();
+  const { id } = useParams();
+  useLocalStorage();
+  const playlist = useSinglelistData(playlistId, id);
+  const getPlaylistData = (list, id) => {
+    return list?.find((item) => item._id === id);
   };
+
+  const playlistData =
+    playList.length !== 0
+      ? getPlaylistData(playList, id)
+      : getPlaylistData(playlist, id);
 
   return (
     <div>
-      <PageHeading name={`Playlist/${playlistData.name}`} />
+      <PageHeading
+        name={`Playlist/${playlistData ? playlistData.name : "..."}`}
+      />
       <div className="video-list-section">
-        {playlistData.list.map((playlistitem) => {
+        {loader && <Puff />}{" "}
+        {playlistData?.list.map((playlistitem) => {
           return (
             <div
-              kay={playlistitem.id}
+              kay={playlistitem._id}
               className="card card--verticle card--l video-card">
               <figure className="card--image">
-                <span onClick={() => deleteFromPlaylist(id, playlistitem.id)}>
+                <span
+                  onClick={() =>
+                    removeFromPlaylist(
+                      playlistId,
+                      id,
+                      playlistitem._id,
+                      dispatchplaylist
+                    )
+                  }>
                   {" "}
                   <ion-icon
                     class="card--dismiss"
                     name="close-circle"></ion-icon>
                 </span>{" "}
-                <Link to={`/${playlistitem.id}`} className="link">
+                <Link to={`/${playlistitem._id}`} className="link">
                   <img
-                    src={thumbnail(playlistitem.id)}
+                    src={thumbnail(playlistitem._id)}
                     alt={playlistitem.name}
                   />{" "}
                 </Link>

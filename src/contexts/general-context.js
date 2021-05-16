@@ -5,10 +5,12 @@ import { generalReducer } from "../reducer/general-reducer";
 const generalContext = createContext();
 
 const initialState = {
-  videos: data,
+  videos: [],
   history: [],
+  historyId: null,
   videoFilter: "all",
   hamMenu: true,
+  loader: false,
 };
 
 export const GeneralContextProvider = ({ children }) => {

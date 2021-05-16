@@ -1,40 +1,38 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import { deletePlaylist } from "../../api/playlist/deletePlaylist";
+import Image from "../../assets/images/default2.png";
 import { usePlaylist } from "../../contexts/playlist-context";
-import { toastMessages } from "../../utils/toastMessages";
+import { usePlaylistData } from "../../hooks/usePlaylistData/usePlaylistData";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+
 export const PlaylistContainer = ({ playlist }) => {
-  const { dispatchplaylist } = usePlaylist();
+  const { playlistId, dispatchplaylist } = usePlaylist();
 
   const playListImage = (list) => {
-    return list[0].id;
+    return list[0]._id;
   };
 
   const checkImageExist = (list) => {
     if (list.length !== 0) {
       return `https://img.youtube.com/vi/${playListImage(list)}/mqdefault.jpg`;
     } else {
-      return `http://fenceup.in/urtexsolutions/img/default2.png`;
+      return Image;
     }
   };
 
-  const deletePlaylist = (playlistid) => {
-    dispatchplaylist({
-      type: "DELETE_PLAYLIST",
-      payload: playlistid,
-    });
-    toastMessages("Playlist Deleated");
-  };
   return (
     <div className="playlist-container">
-      <div key={playlist.id} className="card card--horizontal video-card">
+      <div key={playlist._id} className="card card--horizontal video-card">
         <figure className="card--image">
           <img src={checkImageExist(playlist.list)} alt={playlist.name} />
         </figure>
         <div className="card--body">
           <span
             className="playlist-delete"
-            onClick={() => deletePlaylist(playlist.id)}>
+            onClick={() =>
+              deletePlaylist(playlistId, playlist._id, dispatchplaylist)
+            }>
             <ion-icon class="card--dismiss" name="trash-outline"></ion-icon>
           </span>
           <span className="card--title">{playlist.name}</span>
@@ -42,7 +40,7 @@ export const PlaylistContainer = ({ playlist }) => {
             {playlist.list.length}{" "}
             {playlist.list.length > 1 ? "Videos" : "Video"}
           </p>
-          <Link to={`/playlists/${playlist.id}`}>
+          <Link to={`/playlists/${playlist._id}`}>
             {" "}
             <button className="btn btn--rounded btn-primary">
               Watch Playlist

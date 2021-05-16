@@ -4,6 +4,7 @@ const playlistContext = createContext();
 
 const initialState = {
   playList: [],
+  playlistId: null,
   showPlaylistModal: {
     status: false,
     videoData: "",

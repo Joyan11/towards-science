@@ -4,6 +4,7 @@ const likeContext = createContext();
 
 const initialState = {
   likeList: [],
+  likeId: null,
 };
 
 export const LikeProvider = ({ children }) => {

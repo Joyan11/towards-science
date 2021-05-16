@@ -4,6 +4,7 @@ const watchListContext = createContext();
 
 const initialState = {
   watchList: [],
+  watchlistId: null,
 };
 
 export const WatchListProvider = ({ children }) => {

@@ -3,17 +3,23 @@ import "../../css/video-list-section.css";
 import { WatchCard } from "../Watchlist/WatchCard";
 import { useWatchList } from "../../contexts/watchlist-context";
 import { PageHeading } from "../PageHeading";
+import { useWatchlistData } from "../../hooks/useWatchListData/useWatchlistData";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { Puff } from "../Loader/Puff";
+import { useGeneralContext } from "../../contexts/general-context";
 
 export const WatchList = () => {
   const { watchList } = useWatchList();
-  console.log(watchList);
-
+  const { loader } = useGeneralContext();
+  useLocalStorage();
+  useWatchlistData();
   return (
     <div>
-      <PageHeading name="Watch List" />
+      <PageHeading name="Watchlist" />
       <div className="video-list-section">
+        {loader && <Puff />}
         {watchList.map((watchlist) => (
-          <WatchCard watchlist={watchlist} />
+          <WatchCard key={watchlist._id} watchlist={watchlist} />
         ))}
       </div>
     </div>
