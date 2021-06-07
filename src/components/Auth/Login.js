@@ -12,12 +12,12 @@ export const Login = () => {
     useAuth();
   const { state } = useLocation();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
+  const [userIndentifier, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
   const loginHandler = async (e) => {
     e.preventDefault();
-    await checkUserPass(refineUserdata(username), password);
+    await checkUserPass(refineUserdata(userIndentifier), password);
     navigate(state?.from ? state.from : "/user");
   };
 
@@ -31,11 +31,11 @@ export const Login = () => {
       <form id="form" className="form" onSubmit={loginHandler}>
         <h2>Login</h2>
         <div className="form-control">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="userid">Username/Email</label>
           <input
             autoFocus={true}
-            type="username"
-            id="username"
+            type="userid"
+            id="userid"
             placeholder="Enter Username"
             onChange={(e) => setUsername(e.target.value)}
             required></input>

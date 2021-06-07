@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
     setUserData(user);
   }, []);
 
-  const checkUserPass = async (username, password) => {
+  const checkUserPass = async (userIdentifier, password) => {
     try {
       setErrorMessage("");
       setAuthloader(true);
@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }) => {
         "https://videoLibraryServer.joyan11.repl.co/auth/login",
         {
           user: {
-            username: username,
+            userCredential: userIdentifier,
             password: password,
           },
         }
@@ -40,7 +40,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error.message);
-      if (error.response.status === 401) {
+      if (error?.response.status === 401) {
         setErrorMessage("Email/Password incorrect");
       }
     } finally {
