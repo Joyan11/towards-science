@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/auth-context";
 import { useGeneralContext } from "../../contexts/general-context";
 
 export const useHistoryData = () => {
-  const { history, historyId, dispatchgeneral } = useGeneralContext();
+  const { history, dispatchgeneral } = useGeneralContext();
+  const { token } = useAuth();
 
   const getData = async () => {
     dispatchgeneral({ type: "SET_LOADER" });
@@ -15,7 +17,8 @@ export const useHistoryData = () => {
           historyData: { videos },
         },
       } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/history/${historyId}`
+        `https://videoLibraryServer.joyan11.repl.co/history`,
+        { headers: { authorization: token } }
       );
       if (status === 200 && success === true) {
         dispatchgeneral({
@@ -32,8 +35,8 @@ export const useHistoryData = () => {
   };
 
   useEffect(() => {
-    if (history.length === 0 && historyId !== null) {
+    if (token && history.length === 0) {
       getData();
     }
-  }, [historyId]);
+  }, [token]);
 };

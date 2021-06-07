@@ -15,6 +15,11 @@ export const likeReducer = (state, action) => {
         ...state,
         likeList: state.likeList.filter((item) => item._id !== action.payload),
       };
+    case "RESET":
+      return {
+        ...state,
+        likeList: [],
+      };
     default:
       return state;
   }

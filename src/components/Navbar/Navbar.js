@@ -24,6 +24,17 @@ export function Navbar() {
             </Link>
           </p>
         </div>
+        <ul className="list nav--list">
+          <Link to="/user" className="router-link">
+            <li className="nav-item" style={{ padding: "0 1rem 0 0" }}>
+              <div className="notification">
+                <ion-icon
+                  name="person-circle-outline"
+                  class="notification-icon"></ion-icon>
+              </div>
+            </li>
+          </Link>
+        </ul>
       </nav>
     </>
   );

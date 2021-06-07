@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/auth-context";
 import { useGeneralContext } from "../../contexts/general-context";
 import { usePlaylist } from "../../contexts/playlist-context";
 
 export const usePlaylistData = () => {
-  const { playList, playlistId, dispatchplaylist } = usePlaylist();
+  const { playList, dispatchplaylist } = usePlaylist();
   const { dispatchgeneral } = useGeneralContext();
-
+  const { token } = useAuth();
   const getData = async () => {
     dispatchgeneral({ type: "SET_LOADER" });
     try {
@@ -17,7 +18,8 @@ export const usePlaylistData = () => {
           playlistData: { playlist },
         },
       } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/playlists/${playlistId}`
+        `https://videoLibraryServer.joyan11.repl.co/playlists`,
+        { headers: { authorization: token } }
       );
 
       if (status === 200 && success === true) {
@@ -32,8 +34,8 @@ export const usePlaylistData = () => {
   };
 
   useEffect(() => {
-    if (playList.length === 0 && playlistId !== null) {
+    if (playList.length === 0 && token) {
       getData();
     }
-  }, [playlistId]);
+  }, [token]);
 };

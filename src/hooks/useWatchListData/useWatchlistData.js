@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/auth-context";
 import { useGeneralContext } from "../../contexts/general-context";
 import { useWatchList } from "../../contexts/watchlist-context";
 
 export const useWatchlistData = () => {
-  const { watchList, watchlistId, dispatchwatchlist } = useWatchList();
+  const { token } = useAuth();
+  const { watchList, dispatchwatchlist } = useWatchList();
   const { dispatchgeneral } = useGeneralContext();
 
   const getData = async () => {
@@ -17,7 +19,8 @@ export const useWatchlistData = () => {
           watchlistData: { videos },
         },
       } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/watchlist/${watchlistId}`
+        `https://videoLibraryServer.joyan11.repl.co/watchlist`,
+        { headers: { authorization: token } }
       );
       if (status === 200 && success === true) {
         dispatchwatchlist({
@@ -34,8 +37,8 @@ export const useWatchlistData = () => {
   };
 
   useEffect(() => {
-    if (watchList.length === 0 && watchlistId !== null) {
+    if (watchList.length === 0 && token) {
       getData();
     }
-  }, [watchlistId]);
+  }, [token]);
 };

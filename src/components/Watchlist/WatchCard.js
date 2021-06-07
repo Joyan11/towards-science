@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { removeFromWatchlist } from "../../api/watchlist/removeFromWatchlist";
+import { useAuth } from "../../contexts/auth-context";
 import { useWatchList } from "../../contexts/watchlist-context";
 import { thumbnail } from "../../utils/thumbnail";
 import { toastMessages } from "../../utils/toastMessages";
@@ -8,14 +9,13 @@ import { toastMessages } from "../../utils/toastMessages";
 export const WatchCard = ({ watchlist }) => {
   const { watchlistId, dispatchwatchlist } = useWatchList();
   const { _id, name, category } = watchlist;
+  const { token } = useAuth();
 
   return (
     <div className="card card--verticle card--l video-card">
       <figure className="card--image">
         <span
-          onClick={() =>
-            removeFromWatchlist(watchlistId, _id, dispatchwatchlist)
-          }>
+          onClick={() => removeFromWatchlist(_id, dispatchwatchlist, token)}>
           {" "}
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}

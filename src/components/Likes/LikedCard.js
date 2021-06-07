@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { removeFromLikes } from "../../api/likes/removeFromLikes";
+import { useAuth } from "../../contexts/auth-context";
 import { useLike } from "../../contexts/like-context";
 import { thumbnail } from "../../utils/thumbnail";
 import { toastMessages } from "../../utils/toastMessages";
@@ -7,19 +9,12 @@ import { toastMessages } from "../../utils/toastMessages";
 export const LikedCard = ({ likelist }) => {
   const { dispatchlike } = useLike();
   const { _id, name, category } = likelist;
-
-  const deleteFromLikelist = (id) => {
-    dispatchlike({
-      type: "REMOVE_FROM_LIKED",
-      payload: id,
-    });
-    toastMessages("Video Removed from Likes");
-  };
+  const { token } = useAuth();
 
   return (
     <div className="card card--verticle card--l video-card">
       <figure className="card--image">
-        <span onClick={() => deleteFromLikelist(_id)}>
+        <span onClick={() => removeFromLikes(_id, dispatchlike, token)}>
           {" "}
           <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
         </span>{" "}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
-export const addToLikes = async (likeId, videoData, dispatchlikes) => {
+export const addToLikes = async (videoData, dispatchlikes, token) => {
   try {
     const {
       status,
@@ -10,19 +10,14 @@ export const addToLikes = async (likeId, videoData, dispatchlikes) => {
         likeData: { _id: likeid, videos },
       },
     } = await axios.post(
-      likeId === null
-        ? `https://videoLibraryServer.joyan11.repl.co/likes`
-        : `https://videoLibraryServer.joyan11.repl.co/likes/${likeId}`,
+      `https://videoLibraryServer.joyan11.repl.co/likes`,
       {
         videos: videoData,
-      }
+      },
+      { headers: { authorization: token } }
     );
 
     if (status === 201 && success === true) {
-      if (likeId === null) {
-        dispatchlikes({ type: "SAVE_LIKES_ID", payload: likeid });
-        localStorage.setItem("likeid", JSON.stringify(likeid));
-      }
       dispatchlikes({ type: "ADD_TO_LIKES", payload: videos });
       toastMessages("Video Added to Likes");
     }

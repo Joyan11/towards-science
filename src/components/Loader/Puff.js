@@ -12,3 +12,7 @@ export const Puff = () => {
     />
   );
 };
+
+export const Dots = () => {
+  return <Loader type="ThreeDots" color="#fff" height={10} width={40} />;
+};

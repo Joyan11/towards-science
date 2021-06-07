@@ -3,7 +3,7 @@ import { useGeneralContext } from "../../contexts/general-context";
 export const Categories = ({ category }) => {
   const { videoFilter, dispatchgeneral } = useGeneralContext();
   return (
-    <a
+    <button
       className={`btn btn--round btn-outline-default filter-button ${
         videoFilter === category && `active`
       }`}
@@ -12,6 +12,6 @@ export const Categories = ({ category }) => {
       }>
       {" "}
       {category}
-    </a>
+    </button>
   );
 };

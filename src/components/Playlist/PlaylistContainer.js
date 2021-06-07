@@ -2,13 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { deletePlaylist } from "../../api/playlist/deletePlaylist";
 import Image from "../../assets/images/default2.png";
+import { useAuth } from "../../contexts/auth-context";
 import { usePlaylist } from "../../contexts/playlist-context";
-import { usePlaylistData } from "../../hooks/usePlaylistData/usePlaylistData";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export const PlaylistContainer = ({ playlist }) => {
-  const { playlistId, dispatchplaylist } = usePlaylist();
-
+  const { dispatchplaylist } = usePlaylist();
+  const { token } = useAuth();
   const playListImage = (list) => {
     return list[0]._id;
   };
@@ -31,7 +30,7 @@ export const PlaylistContainer = ({ playlist }) => {
           <span
             className="playlist-delete"
             onClick={() =>
-              deletePlaylist(playlistId, playlist._id, dispatchplaylist)
+              deletePlaylist(playlist._id, dispatchplaylist, token)
             }>
             <ion-icon class="card--dismiss" name="trash-outline"></ion-icon>
           </span>

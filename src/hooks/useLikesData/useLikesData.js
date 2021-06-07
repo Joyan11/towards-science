@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useEffect } from "react";
+import { useAuth } from "../../contexts/auth-context";
 import { useGeneralContext } from "../../contexts/general-context";
 import { useLike } from "../../contexts/like-context";
 
 export const useLikeData = () => {
-  const { likeList, likeId, dispatchlike } = useLike();
+  const { likeList, dispatchlike } = useLike();
   const { dispatchgeneral } = useGeneralContext();
+  const { token } = useAuth();
   const getData = async () => {
     dispatchgeneral({ type: "SET_LOADER" });
     try {
@@ -15,9 +17,9 @@ export const useLikeData = () => {
           success,
           likeData: { videos },
         },
-      } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/likes/${likeId}`
-      );
+      } = await axios.get(`https://videoLibraryServer.joyan11.repl.co/likes`, {
+        headers: { authorization: token },
+      });
       if (status === 200 && success === true) {
         dispatchlike({
           type: "ADD_TO_LIKES",
@@ -33,8 +35,8 @@ export const useLikeData = () => {
   };
 
   useEffect(() => {
-    if (likeList.length === 0 && likeId !== null) {
+    if (likeList.length === 0 && token) {
       getData();
     }
-  }, [likeId]);
+  }, [token]);
 };

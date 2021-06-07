@@ -2,19 +2,20 @@ import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const removeFromWatchlist = async (
-  watchlistId,
   videoId,
-  dispatchwatchlist
+  dispatchwatchlist,
+  token
 ) => {
   try {
     const {
       status,
       data: {
         success,
-        watchlistData: { _id: watchid, videos },
+        watchlistData: { videos },
       },
     } = await axios.delete(
-      `https://videoLibraryServer.joyan11.repl.co/watchlist/${watchlistId}/${videoId}`
+      `https://videoLibraryServer.joyan11.repl.co/watchlist/${videoId}`,
+      { headers: { authorization: token } }
     );
     if (status === 200 && success === true) {
       dispatchwatchlist({ type: "REMOVE_FROM_WATCHLIST", payload: videoId });

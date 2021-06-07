@@ -8,14 +8,15 @@ import { useSinglelistData } from "../../hooks/usePlaylistData/useSinglistData";
 import { useGeneralContext } from "../../contexts/general-context";
 import { Puff } from "../Loader/Puff";
 import { removeFromPlaylist } from "../../api/playlist/removeFromPlaylist";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
+import { useAuth } from "../../contexts/auth-context";
 
 export const PlaylistCard = () => {
-  const { playList, playlistId, dispatchplaylist } = usePlaylist();
+  const { token } = useAuth();
+  const { playList, dispatchplaylist } = usePlaylist();
   const { loader } = useGeneralContext();
   const { id } = useParams();
-  useLocalStorage();
-  const playlist = useSinglelistData(playlistId, id);
+  const playlist = useSinglelistData(id);
+
   const getPlaylistData = (list, id) => {
     return list?.find((item) => item._id === id);
   };
@@ -35,16 +36,16 @@ export const PlaylistCard = () => {
         {playlistData?.list.map((playlistitem) => {
           return (
             <div
-              kay={playlistitem._id}
+              key={playlistitem._id}
               className="card card--verticle card--l video-card">
               <figure className="card--image">
                 <span
                   onClick={() =>
                     removeFromPlaylist(
-                      playlistId,
                       id,
                       playlistitem._id,
-                      dispatchplaylist
+                      dispatchplaylist,
+                      token
                     )
                   }>
                   {" "}

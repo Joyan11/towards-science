@@ -17,6 +17,11 @@ export const watchListReducer = (state, action) => {
           (item) => item._id !== action.payload
         ),
       };
+    case "RESET":
+      return {
+        ...state,
+        watchList: [],
+      };
     default:
       return {
         ...state,

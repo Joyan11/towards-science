@@ -1,20 +1,17 @@
 import React from "react";
-import axios from "axios";
 import "../../css/playlistmodal.css";
 import { usePlaylist } from "../../contexts/playlist-context";
 import { createPlaylist } from "../../api/playlist/createPlaylist";
 import { addToPlaylist } from "../../api/playlist/addToPlaylist";
 import { removeFromPlaylist } from "../../api/playlist/removeFromPlaylist";
+import { useAuth } from "../../contexts/auth-context";
 
 export const PlaylistModal = () => {
   const [text, setText] = React.useState("");
-  const {
-    playList,
-    playlistId,
-    inputPlaylistBox,
-    showPlaylistModal,
-    dispatchplaylist,
-  } = usePlaylist();
+  const { playList, inputPlaylistBox, showPlaylistModal, dispatchplaylist } =
+    usePlaylist();
+
+  const { token } = useAuth();
 
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
@@ -24,18 +21,18 @@ export const PlaylistModal = () => {
 
   const handleOnclick = () => {
     dispatchplaylist({ type: "DISPLAY_INPUT_BOX" });
-    text !== "" && createPlaylist(playlistId, dispatchplaylist, text);
+    text !== "" && createPlaylist(dispatchplaylist, text, token);
     setText("");
   };
 
-  const handlePlaylistCheckbox = (e, playlistId) => {
+  const handlePlaylistCheckbox = (e, token) => {
     let listId = e.target.id;
     if (e.target.checked === true) {
       let videoData = showPlaylistModal.videoData;
-      addToPlaylist(playlistId, listId, dispatchplaylist, videoData);
+      addToPlaylist(listId, dispatchplaylist, videoData, token);
     } else {
       let videoId = showPlaylistModal.videoData._id;
-      removeFromPlaylist(playlistId, listId, videoId, dispatchplaylist);
+      removeFromPlaylist(listId, videoId, dispatchplaylist, token);
     }
   };
 
@@ -86,7 +83,7 @@ export const PlaylistModal = () => {
                     className="playlist-checkbox"
                     id={item._id}
                     checked={itemChecked(item._id)}
-                    onChange={(e) => handlePlaylistCheckbox(e, playlistId)}
+                    onChange={(e) => handlePlaylistCheckbox(e, token)}
                   />
 
                   <label htmlFor={item._id}>{item.name}</label>

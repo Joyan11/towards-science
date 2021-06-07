@@ -1,29 +1,22 @@
 import axios from "axios";
-import { toastMessages } from "../../utils/toastMessages";
 
-export const addToHistory = async (historyId, videoData, dispatchgeneral) => {
+export const addToHistory = async (videoData, dispatchgeneral, token) => {
   try {
     const {
       status,
       data: {
         success,
-        historyData: { _id: historyid, videos },
+        historyData: { videos },
       },
     } = await axios.post(
-      historyId === null
-        ? `https://videoLibraryServer.joyan11.repl.co/history`
-        : `https://videoLibraryServer.joyan11.repl.co/history/${historyId}`,
+      `https://videoLibraryServer.joyan11.repl.co/history`,
       {
         videos: videoData,
-      }
+      },
+      { headers: { authorization: token } }
     );
 
     if (status === 201 && success === true) {
-      if (historyId === null) {
-        dispatchgeneral({ type: "SAVE_HISTORY_ID", payload: historyid });
-        localStorage.setItem("historyid", JSON.stringify(historyid));
-      }
-
       dispatchgeneral({ type: "ADD_TO_HISTORY", payload: videos });
     }
   } catch (error) {

@@ -15,12 +15,14 @@ import { removeFromLikes } from "../../api/likes/removeFromLikes";
 import { addToHistory } from "../../api/history/addToHistory";
 import { useVideoPlayer } from "../../hooks/useVideoData/useVideoPlayer";
 import { Puff } from "../Loader/Puff";
+import { useAuth } from "../../contexts/auth-context";
 
 export const VideoPlayer = () => {
+  const { token } = useAuth();
   const { dispatchplaylist } = usePlaylist();
   const { likeList, likeId, dispatchlike } = useLike();
-  const { watchList, watchlistId, dispatchwatchlist } = useWatchList();
-  const { history, historyId, loader, dispatchgeneral } = useGeneralContext();
+  const { watchList, dispatchwatchlist } = useWatchList();
+  const { history, loader, dispatchgeneral } = useGeneralContext();
   const { id } = useParams();
   const videoData = useVideoPlayer(id);
 
@@ -29,23 +31,23 @@ export const VideoPlayer = () => {
       videoData &&
       history.some((item) => item?._id === videoData?._id) === false
     ) {
-      addToHistory(historyId, videoData, dispatchgeneral);
+      addToHistory(videoData, dispatchgeneral, token);
     }
   }, [videoData]);
 
   const handleLikeHandler = (videoData) => {
     if (likeList.some((item) => item._id === id)) {
-      removeFromLikes(likeId, videoData._id, dispatchlike);
+      removeFromLikes(videoData._id, dispatchlike, token);
     } else {
-      addToLikes(likeId, videoData, dispatchlike);
+      addToLikes(videoData, dispatchlike, token);
     }
   };
 
   const handleWatchlistHandler = (videoData) => {
     if (watchList.some((item) => item._id === id)) {
-      removeFromWatchlist(watchlistId, videoData._id, dispatchwatchlist);
+      removeFromWatchlist(videoData._id, dispatchwatchlist, token);
     } else {
-      addToWatchlist(watchlistId, videoData, dispatchwatchlist);
+      addToWatchlist(videoData, dispatchwatchlist, token);
     }
   };
 

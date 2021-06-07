@@ -35,6 +35,11 @@ export const generalReducer = (state, action) => {
         ...state,
         loader: !state.loader,
       };
+    case "RESET":
+      return {
+        ...state,
+        history: [],
+      };
     default:
       return {
         ...state,

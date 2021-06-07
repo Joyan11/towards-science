@@ -1,4 +1,3 @@
-import uuid from "react-uuid";
 export const playlistReducer = (state, action) => {
   switch (action.type) {
     case "SHOW_PLAYLIST_MODAL":
@@ -39,6 +38,11 @@ export const playlistReducer = (state, action) => {
       return {
         ...state,
         playList: action.payload,
+      };
+    case "RESET":
+      return {
+        ...state,
+        playList: [],
       };
     default:
       return state;

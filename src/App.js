@@ -2,16 +2,23 @@ import "./App.css";
 import "./css/card-customize.css";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
-import { Navbar } from "./components/Navbar/Navbar";
-import { Sidebar } from "./components/Sidebar/Sidebar";
-import { Videos } from "./components/Videos/Videos";
-import { Playlist } from "./components/Playlist/Playlist";
-import { LikedVideos } from "./components/Likes/LikedVideos";
-import { WatchList } from "./components/Watchlist/WatchList";
-import { VideoPlayer } from "./components/Videos/VideoPlayer";
-import { PlaylistCard } from "./components/Playlist/PlaylistCard";
-import { History } from "./components/History/History";
 import { Routes, Route } from "react-router-dom";
+import {
+  History,
+  LikedVideos,
+  Navbar,
+  Playlist,
+  PlaylistCard,
+  Sidebar,
+  VideoPlayer,
+  Videos,
+  WatchList,
+  PrivateRoute,
+  Login,
+  Signup,
+  UserDetails,
+} from "./components/index";
+
 function App() {
   return (
     <div className="App">
@@ -21,12 +28,15 @@ function App() {
           <Sidebar />
           <Routes>
             <Route path="/" element={<Videos />} />
-            <Route path="/playlists" element={<Playlist />} />
-            <Route path="/playlists/:id" element={<PlaylistCard />} />
-            <Route path="/liked-videos" element={<LikedVideos />} />
-            <Route path="/watch-list" element={<WatchList />} />
-            <Route path="/history" element={<History />} />
             <Route path=":id" element={<VideoPlayer />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <PrivateRoute path="/user" element={<UserDetails />} />
+            <PrivateRoute path="/playlists" element={<Playlist />} />
+            <PrivateRoute path="/playlists/:id" element={<PlaylistCard />} />
+            <PrivateRoute path="/liked-videos" element={<LikedVideos />} />
+            <PrivateRoute path="/history" element={<History />} />
+            <PrivateRoute path="/watch-list" element={<WatchList />} />
           </Routes>
         </div>
         <ToastContainer />

@@ -4,14 +4,12 @@ import { WatchCard } from "../Watchlist/WatchCard";
 import { useWatchList } from "../../contexts/watchlist-context";
 import { PageHeading } from "../PageHeading";
 import { useWatchlistData } from "../../hooks/useWatchListData/useWatchlistData";
-import { useLocalStorage } from "../../hooks/useLocalStorage";
 import { Puff } from "../Loader/Puff";
 import { useGeneralContext } from "../../contexts/general-context";
 
 export const WatchList = () => {
   const { watchList } = useWatchList();
   const { loader } = useGeneralContext();
-  useLocalStorage();
   useWatchlistData();
   return (
     <div>

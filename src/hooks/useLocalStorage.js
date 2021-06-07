@@ -9,23 +9,23 @@ export const useLocalStorage = () => {
   const { dispatchgeneral } = useGeneralContext();
   const { dispatchwatchlist } = useWatchList();
   const { dispatchlike } = useLike();
-  useEffect(() => {
-    const response = JSON.parse(localStorage.getItem("playlistid"));
-    dispatchplaylist({ type: "SAVE_PLAYLIST_ID", payload: response });
-  }, []);
+  // useEffect(() => {
+  //   const response = JSON.parse(localStorage.getItem("playlistid"));
+  //   dispatchplaylist({ type: "SAVE_PLAYLIST_ID", payload: response });
+  // }, []);
 
-  useEffect(() => {
-    const response = JSON.parse(localStorage.getItem("historyid"));
-    dispatchgeneral({ type: "SAVE_HISTORY_ID", payload: response });
-  }, []);
+  // useEffect(() => {
+  //   const response = JSON.parse(localStorage.getItem("historyid"));
+  //   dispatchgeneral({ type: "SAVE_HISTORY_ID", payload: response });
+  // }, []);
 
-  useEffect(() => {
-    const response = JSON.parse(localStorage.getItem("watchid"));
-    dispatchwatchlist({ type: "SAVE_WATCHLIST_ID", payload: response });
-  }, []);
+  // useEffect(() => {
+  //   const response = JSON.parse(localStorage.getItem("watchid"));
+  //   dispatchwatchlist({ type: "SAVE_WATCHLIST_ID", payload: response });
+  // }, []);
 
-  useEffect(() => {
-    const response = JSON.parse(localStorage.getItem("likeid"));
-    dispatchlike({ type: "SAVE_LIKES_ID", payload: response });
-  }, []);
+  // useEffect(() => {
+  //   const response = JSON.parse(localStorage.getItem("likeid"));
+  //   dispatchlike({ type: "SAVE_LIKES_ID", payload: response });
+  // }, []);
 };

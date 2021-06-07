@@ -2,10 +2,10 @@ import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const addToPlaylist = async (
-  playlistId,
   listId,
   dispatchplaylist,
-  videoData
+  videoData,
+  token
 ) => {
   try {
     const {
@@ -15,10 +15,11 @@ export const addToPlaylist = async (
         playlistData: { playlist },
       },
     } = await axios.post(
-      `https://videoLibraryServer.joyan11.repl.co/playlists/${playlistId}/${listId}`,
+      `https://videoLibraryServer.joyan11.repl.co/playlists/${listId}`,
       {
         videodata: videoData,
-      }
+      },
+      { headers: { authorization: token } }
     );
     if (status === 201 && success === true) {
       dispatchplaylist({
