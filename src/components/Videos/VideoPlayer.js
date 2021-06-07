@@ -5,7 +5,7 @@ import { usePlaylist } from "../../contexts/playlist-context";
 import { useLike } from "../../contexts/like-context";
 import { useWatchList } from "../../contexts/watchlist-context";
 import { useGeneralContext } from "../../contexts/general-context";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { PlaylistModal } from "./PlaylistModal";
 import ReactPlayer from "react-player";
 import { addToWatchlist } from "../../api/watchlist/addToWatchlist";
@@ -20,11 +20,12 @@ import { useAuth } from "../../contexts/auth-context";
 export const VideoPlayer = () => {
   const { token } = useAuth();
   const { dispatchplaylist } = usePlaylist();
-  const { likeList, likeId, dispatchlike } = useLike();
+  const { likeList, dispatchlike } = useLike();
   const { watchList, dispatchwatchlist } = useWatchList();
   const { history, loader, dispatchgeneral } = useGeneralContext();
   const { id } = useParams();
   const videoData = useVideoPlayer(id);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (
@@ -36,18 +37,37 @@ export const VideoPlayer = () => {
   }, [videoData]);
 
   const handleLikeHandler = (videoData) => {
-    if (likeList.some((item) => item._id === id)) {
-      removeFromLikes(videoData._id, dispatchlike, token);
+    if (token) {
+      if (likeList.some((item) => item._id === id)) {
+        removeFromLikes(videoData._id, dispatchlike, token);
+      } else {
+        addToLikes(videoData, dispatchlike, token);
+      }
     } else {
-      addToLikes(videoData, dispatchlike, token);
+      navigate("/login");
     }
   };
 
   const handleWatchlistHandler = (videoData) => {
-    if (watchList.some((item) => item._id === id)) {
-      removeFromWatchlist(videoData._id, dispatchwatchlist, token);
+    if (token) {
+      if (watchList.some((item) => item._id === id)) {
+        removeFromWatchlist(videoData._id, dispatchwatchlist, token);
+      } else {
+        addToWatchlist(videoData, dispatchwatchlist, token);
+      }
     } else {
-      addToWatchlist(videoData, dispatchwatchlist, token);
+      navigate("/login");
+    }
+  };
+
+  const playlistModalHandler = () => {
+    if (token) {
+      dispatchplaylist({
+        type: "SHOW_PLAYLIST_MODAL",
+        payload: videoData,
+      });
+    } else {
+      navigate("/login");
     }
   };
 
@@ -117,12 +137,7 @@ export const VideoPlayer = () => {
 
               <div
                 className="player-icon-set btn--icon btn--icon--front"
-                onClick={() =>
-                  dispatchplaylist({
-                    type: "SHOW_PLAYLIST_MODAL",
-                    payload: videoData,
-                  })
-                }>
+                onClick={playlistModalHandler}>
                 <ion-icon
                   className="player-icons"
                   name="list-outline"></ion-icon>
