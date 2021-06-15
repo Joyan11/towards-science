@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/videoplayer.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { usePlaylist } from "../../contexts/playlist-context";
 import { useLike } from "../../contexts/like-context";
 import { useWatchList } from "../../contexts/watchlist-context";
@@ -16,6 +16,7 @@ import { addToHistory } from "../../api/history/addToHistory";
 import { useVideoPlayer } from "../../hooks/useVideoData/useVideoPlayer";
 import { Puff } from "../Loader/Puff";
 import { useAuth } from "../../contexts/auth-context";
+import axios from "axios";
 
 export const VideoPlayer = () => {
   const { token } = useAuth();
@@ -26,15 +27,20 @@ export const VideoPlayer = () => {
   const { id } = useParams();
   const videoData = useVideoPlayer(id);
   const navigate = useNavigate();
+  const [views, setviews] = useState(0);
 
   useEffect(() => {
     if (
       videoData &&
       history.some((item) => item?._id === videoData?._id) === false
     ) {
-      addToHistory(videoData, dispatchgeneral, token);
+      token && addToHistory(videoData, dispatchgeneral, token);
     }
   }, [videoData]);
+
+  useEffect(() => {
+    dispatchgeneral({ type: "ADD_VIEWS", payload: 0 });
+  }, []);
 
   const handleLikeHandler = (videoData) => {
     if (token) {
@@ -87,6 +93,22 @@ export const VideoPlayer = () => {
     }
   };
 
+  const addViews = async (id, dispatchgeneral) => {
+    try {
+      const {
+        status,
+        data: { views },
+      } = await axios.post("https://videoLibraryServer.joyan11.repl.co/views", {
+        videoid: id,
+      });
+      if (status === 201) {
+        setviews(views);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="video-player-section">
       {loader && <Puff />}
@@ -100,21 +122,19 @@ export const VideoPlayer = () => {
               height="100%"
               controls
               playing={true}
+              onPlay={() => addViews(id, dispatchgeneral)}
               url={`https://www.youtube.com/watch?v=${id}`}
             />
           </div>
           <div className="video-heading">
             <p className=" text-m">{videoData.name}</p>
+            <p className="views">{views} Views</p>
           </div>
           <div className="video-wrapper">
             <div className="video-category">
               <p className="text-uppercase">#{videoData.category}</p>
             </div>
             <div className="player-btn-container">
-              {/* <div className="player-icon-set btn--icon btn--icon--front">
-            <ion-icon name="arrow-redo-outline"></ion-icon>
-            <div className="player-button-text">SHARE</div>
-          </div> */}
               <div
                 className={`player-icon-set btn--icon btn--icon--front ${watchListToggle(
                   videoData._id
