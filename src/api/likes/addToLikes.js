@@ -7,7 +7,7 @@ export const addToLikes = async (videoData, dispatchlikes, token) => {
       status,
       data: {
         success,
-        likeData: { _id: likeid, videos },
+        likeData: { videos },
       },
     } = await axios.post(
       `https://videoLibraryServer.joyan11.repl.co/likes`,

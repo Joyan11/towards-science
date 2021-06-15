@@ -1,5 +1,4 @@
 import { createContext, useReducer, useContext } from "react";
-import { data } from "../data/data";
 import { generalReducer } from "../reducer/general-reducer";
 
 const generalContext = createContext();
@@ -11,6 +10,7 @@ const initialState = {
   videoFilter: "all",
   hamMenu: true,
   loader: false,
+  views: 0,
 };
 
 export const GeneralContextProvider = ({ children }) => {

@@ -4,10 +4,9 @@ import { removeFromWatchlist } from "../../api/watchlist/removeFromWatchlist";
 import { useAuth } from "../../contexts/auth-context";
 import { useWatchList } from "../../contexts/watchlist-context";
 import { thumbnail } from "../../utils/thumbnail";
-import { toastMessages } from "../../utils/toastMessages";
 
 export const WatchCard = ({ watchlist }) => {
-  const { watchlistId, dispatchwatchlist } = useWatchList();
+  const { dispatchwatchlist } = useWatchList();
   const { _id, name, category } = watchlist;
   const { token } = useAuth();
 

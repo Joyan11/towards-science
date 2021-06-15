@@ -87,7 +87,6 @@ export const Signup = () => {
       <div className="form-container">
         <form id="form" className="form" onSubmit={handleSubmit}>
           <h2>Register with us</h2>
-
           <div className="form-control ">
             <label htmlFor="username">Username</label>
             <input

@@ -9,10 +9,7 @@ export const removeFromWatchlist = async (
   try {
     const {
       status,
-      data: {
-        success,
-        watchlistData: { videos },
-      },
+      data: { success },
     } = await axios.delete(
       `https://videoLibraryServer.joyan11.repl.co/watchlist/${videoId}`,
       { headers: { authorization: token } }

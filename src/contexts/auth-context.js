@@ -22,7 +22,7 @@ export const AuthProvider = ({ children }) => {
       setAuthloader(true);
       const {
         status,
-        data: { success, message, token, userdata },
+        data: { success, token, userdata },
       } = await axios.post(
         "https://videoLibraryServer.joyan11.repl.co/auth/login",
         {

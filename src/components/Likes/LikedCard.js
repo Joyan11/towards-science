@@ -4,7 +4,6 @@ import { removeFromLikes } from "../../api/likes/removeFromLikes";
 import { useAuth } from "../../contexts/auth-context";
 import { useLike } from "../../contexts/like-context";
 import { thumbnail } from "../../utils/thumbnail";
-import { toastMessages } from "../../utils/toastMessages";
 
 export const LikedCard = ({ likelist }) => {
   const { dispatchlike } = useLike();

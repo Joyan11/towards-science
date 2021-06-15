@@ -5,10 +5,7 @@ export const removeFromLikes = async (videoId, dispatchlikes, token) => {
   try {
     const {
       status,
-      data: {
-        success,
-        likeData: { videos },
-      },
+      data: { success },
     } = await axios.delete(
       `https://videoLibraryServer.joyan11.repl.co/likes/${videoId}`,
       { headers: { authorization: token } }

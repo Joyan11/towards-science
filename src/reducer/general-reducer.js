@@ -40,6 +40,11 @@ export const generalReducer = (state, action) => {
         ...state,
         history: [],
       };
+    case "ADD_VIEWS":
+      return {
+        ...state,
+        views: action.payload,
+      };
     default:
       return {
         ...state,

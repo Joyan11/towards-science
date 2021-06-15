@@ -14,9 +14,9 @@ export const History = () => {
       <PageHeading name="History" />
       <div className="video-list-section">
         {loader && <Puff />}
-        {history.map((item) => (
-          <HistoryCard jey={item._id} history={item} />
-        ))}
+        {React.Children.toArray(
+          history.map((item) => <HistoryCard history={item} />)
+        )}
       </div>
     </div>
   );

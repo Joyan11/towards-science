@@ -25,9 +25,11 @@ export function Videos() {
       <CategoryBar />
       <div className="video-page">
         {loader && <Puff />}
-        {filteredItems.map((videos) => {
-          return <VideoCard key={videos._id} videos={videos} />;
-        })}
+        {React.Children.toArray(
+          filteredItems.map((videos) => {
+            return <VideoCard videos={videos} />;
+          })
+        )}
       </div>
       <PlaylistModal />
     </section>

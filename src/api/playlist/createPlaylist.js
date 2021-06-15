@@ -5,7 +5,7 @@ export const createPlaylist = async (dispatchplaylist, text, token) => {
       status,
       data: {
         success,
-        playlistData: { _id: playlistid, playlist },
+        playlistData: { playlist },
       },
     } = await axios.post(
       `https://videoLibraryServer.joyan11.repl.co/playlists`,

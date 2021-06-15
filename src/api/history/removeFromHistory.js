@@ -5,10 +5,7 @@ export const removeFromHistory = async (videoId, dispatchgeneral, token) => {
   try {
     const {
       status,
-      data: {
-        success,
-        historyData: { videos },
-      },
+      data: { success },
     } = await axios.delete(
       `https://videoLibraryServer.joyan11.repl.co/history/${videoId}`,
       { headers: { authorization: token } }
