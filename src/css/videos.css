@@ -15,6 +15,11 @@
 
 .video-page .card {
   margin: 1rem;
+  transition: transform 0.5s;
+}
+
+.video-page .card:hover {
+  transform: scale(0.99);
 }
 
 .card--image {

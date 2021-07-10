@@ -18,6 +18,11 @@
   color: #fff;
 }
 
+.filter-button:hover {
+  background-color: #cac5c5;
+  color: #fff;
+}
+
 @media (max-width: 768px) {
   .filter-button {
     min-width: fit-content;
