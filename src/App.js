@@ -18,8 +18,20 @@ import {
   Signup,
   UserDetails,
 } from "./components/index";
+import {
+  useHistoryData,
+  useLikeData,
+  usePlaylistData,
+  useVideoData,
+  useWatchlistData,
+} from "./hooks";
 
 function App() {
+  useHistoryData();
+  usePlaylistData();
+  useWatchlistData();
+  useVideoData();
+  useLikeData();
   return (
     <div className="App">
       <main>

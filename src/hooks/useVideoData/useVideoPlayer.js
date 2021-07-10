@@ -14,7 +14,6 @@ export const useVideoPlayer = (videoId) => {
       } = await axios.get(
         `https://videoLibraryServer.joyan11.repl.co/videos/${videoId}`
       );
-
       if (status === 200 && success === true) {
         setvideoData(videodata);
       }

@@ -28,7 +28,6 @@ export const VideoPlayer = () => {
   const videoData = useVideoPlayer(id);
   const navigate = useNavigate();
   const [views, setviews] = useState(0);
-
   useEffect(() => {
     if (
       videoData &&
@@ -36,11 +35,11 @@ export const VideoPlayer = () => {
     ) {
       token && addToHistory(videoData, dispatchgeneral, token);
     }
-  }, [videoData]);
+  }, [videoData, dispatchgeneral, history, token]);
 
   useEffect(() => {
     dispatchgeneral({ type: "ADD_VIEWS", payload: 0 });
-  }, []);
+  }, [dispatchgeneral]);
 
   const handleLikeHandler = (videoData) => {
     if (token) {
@@ -128,7 +127,9 @@ export const VideoPlayer = () => {
           </div>
           <div className="video-heading">
             <p className=" text-m">{videoData.name}</p>
-            <p className="views">{views} Views</p>
+            <p className="views">
+              {views === 0 ? videoData.views : views} Views
+            </p>
           </div>
           <div className="video-wrapper">
             <div className="video-category">

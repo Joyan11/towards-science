@@ -3,13 +3,12 @@ import "../../css/video-list-section.css";
 import { LikedCard } from "./LikedCard";
 import { useLike } from "../../contexts/like-context";
 import { PageHeading } from "../PageHeading";
-import { useLikeData } from "../../hooks/useLikesData/useLikesData";
 import { useGeneralContext } from "../../contexts/general-context";
 import { Puff } from "../Loader/Puff";
 export function LikedVideos() {
   const { loader } = useGeneralContext();
   const { likeList } = useLike();
-  useLikeData();
+
   return (
     <div>
       <PageHeading name="Likes" />
