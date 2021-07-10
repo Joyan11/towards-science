@@ -18,6 +18,7 @@ export const createPlaylist = async (dispatchplaylist, text, token) => {
         },
       }
     );
+    console.log(playlist);
     if (status === 201 && success === true) {
       dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: playlist });
     }

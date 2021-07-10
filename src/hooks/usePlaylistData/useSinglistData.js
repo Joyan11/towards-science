@@ -22,8 +22,7 @@ export const useSinglelistData = (listId) => {
           playlistData: { playlist },
         },
       } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/playlists/${listId}`,
-        { headers: { authorization: token } }
+        `https://videoLibraryServer.joyan11.repl.co/playlists/${listId}`
       );
       if (status === 200 && success === true) {
         setPlaylist(playlist);

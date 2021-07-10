@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "../../css/playlist.css";
 import { PlaylistContainer } from "./PlaylistContainer";
@@ -13,7 +15,7 @@ export function Playlist() {
       <PageHeading name="Playlists" />
       <div className="playlist-wrapper">
         {loader && <Puff />}
-        {playList.map((playlist) => {
+        {playList?.map((playlist) => {
           return <PlaylistContainer key={playlist._id} playlist={playlist} />;
         })}
       </div>

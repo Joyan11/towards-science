@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "../../css/video-list-section.css";
 import { LikedCard } from "./LikedCard";
@@ -14,7 +16,7 @@ export function LikedVideos() {
       <PageHeading name="Likes" />
       <div className="video-list-section">
         {loader && <Puff />}
-        {likeList.map((item) => (
+        {likeList?.map((item) => (
           <LikedCard key={item._id} likelist={item} />
         ))}
       </div>

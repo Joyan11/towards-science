@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "../../css/video-list-section.css";
 import { usePlaylist } from "../../contexts/playlist-context";
@@ -62,7 +64,7 @@ export const PlaylistCard = () => {
               </figure>
               <div className="card--body">
                 {" "}
-                <span clasNames="card--title">{playlistitem.name}</span>
+                <span className="card--title">{playlistitem.name}</span>
                 <p className="card--text"> {playlistitem.category} </p>
               </div>
             </div>

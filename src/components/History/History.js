@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "../../css/video-list-section.css";
 import { useGeneralContext } from "../../contexts/general-context";
@@ -13,7 +15,7 @@ export const History = () => {
       <div className="video-list-section">
         {loader && <Puff />}
         {React.Children.toArray(
-          history.map((item) => <HistoryCard history={item} />)
+          history?.map((item) => <HistoryCard history={item} />)
         )}
       </div>
     </div>

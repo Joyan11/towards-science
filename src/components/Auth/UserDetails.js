@@ -8,13 +8,9 @@ import { useLike } from "../../contexts/like-context";
 import { usePlaylist } from "../../contexts/playlist-context";
 import { useWatchList } from "../../contexts/watchlist-context";
 import "../../css/user.css";
-// import { Logout } from "./Logout";
-// import { logOut } from "./util/logout";
 export const UserDetails = () => {
   const {
     userData: { username, email },
-    setToken,
-    setUserData,
     logOut,
   } = useAuth();
 
@@ -43,7 +39,7 @@ export const UserDetails = () => {
       </p>
       <button
         className="btn btn--round btn-primary logout"
-        onClick={() => logOut(setToken, setUserData)}>
+        onClick={() => logOutHandler()}>
         Logout
       </button>
       {/* <Logout logout={logOut} /> */}

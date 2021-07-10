@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import "../../css/video-list-section.css";
 import { WatchCard } from "../Watchlist/WatchCard";
@@ -14,7 +16,7 @@ export const WatchList = () => {
       <PageHeading name="Watchlist" />
       <div className="video-list-section">
         {loader && <Puff />}
-        {watchList.map((watchlist) => (
+        {watchList?.map((watchlist) => (
           <WatchCard key={watchlist._id} watchlist={watchlist} />
         ))}
       </div>
