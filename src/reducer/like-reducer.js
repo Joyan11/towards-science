@@ -1,10 +1,7 @@
+/** @format */
+
 export const likeReducer = (state, action) => {
   switch (action.type) {
-    case "SAVE_LIKES_ID":
-      return {
-        ...state,
-        likeId: action.payload,
-      };
     case "ADD_TO_LIKES":
       return {
         ...state,

@@ -1,14 +1,11 @@
+/** @format */
+
 export const generalReducer = (state, action) => {
   switch (action.type) {
     case "SET_INITIAL_DATA":
       return {
         ...state,
         videos: action.payload,
-      };
-    case "SAVE_HISTORY_ID":
-      return {
-        ...state,
-        historyId: action.payload,
       };
     case "ADD_TO_HISTORY":
       return {

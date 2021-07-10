@@ -1,10 +1,7 @@
+/** @format */
+
 export const watchListReducer = (state, action) => {
   switch (action.type) {
-    case "SAVE_WATCHLIST_ID":
-      return {
-        ...state,
-        watchlistId: action.payload,
-      };
     case "ADD_TO_WATCHLIST":
       return {
         ...state,

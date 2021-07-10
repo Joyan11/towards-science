@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 export const createPlaylist = async (dispatchplaylist, text, token) => {
   try {
@@ -17,7 +19,6 @@ export const createPlaylist = async (dispatchplaylist, text, token) => {
       },
       { headers: { authorization: token } }
     );
-
     if (status === 201 && success === true) {
       dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: playlist });
     }

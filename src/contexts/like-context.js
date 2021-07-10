@@ -1,10 +1,11 @@
+/** @format */
+
 import { createContext, useContext, useReducer } from "react";
 import { likeReducer } from "../reducer/like-reducer";
 const likeContext = createContext();
 
 const initialState = {
   likeList: [],
-  likeId: null,
 };
 
 export const LikeProvider = ({ children }) => {

@@ -1,3 +1,5 @@
+/** @format */
+
 export const playlistReducer = (state, action) => {
   switch (action.type) {
     case "SHOW_PLAYLIST_MODAL":
@@ -13,11 +15,6 @@ export const playlistReducer = (state, action) => {
       return {
         ...state,
         inputPlaylistBox: state.inputPlaylistBox === false ? true : false,
-      };
-    case "SAVE_PLAYLIST_ID":
-      return {
-        ...state,
-        playlistId: action.payload,
       };
     case "CREATE_PLAY_LIST":
       return {
