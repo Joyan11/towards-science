@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts/auth-context";
@@ -13,24 +15,20 @@ export const UserDetails = () => {
     userData: { username, email },
     setToken,
     setUserData,
+    logOut,
   } = useAuth();
-  const navigate = useNavigate();
 
   const { dispatchplaylist } = usePlaylist();
   const { dispatchwatchlist } = useWatchList();
   const { dispatchgeneral } = useGeneralContext();
   const { dispatchlike } = useLike();
 
-  const logOut = () => {
+  const logOutHandler = () => {
     dispatchgeneral({ type: "RESET" });
     dispatchlike({ type: "RESET" });
     dispatchwatchlist({ type: "RESET" });
     dispatchplaylist({ type: "RESET" });
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    setToken(null);
-    setUserData("");
-    navigate("/login");
+    logOut();
   };
 
   return (
