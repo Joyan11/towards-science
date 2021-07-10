@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useAuth } from "../../contexts/auth-context";
@@ -35,7 +37,7 @@ export const useSinglelistData = (listId) => {
   };
 
   useEffect(() => {
-    if (playList.length === 0 && token) {
+    if (token) {
       getData();
     }
   }, [token]);

@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
@@ -18,8 +20,7 @@ export const addToPlaylist = async (
       `https://videoLibraryServer.joyan11.repl.co/playlists/${listId}`,
       {
         videodata: videoData,
-      },
-      { headers: { authorization: token } }
+      }
     );
     if (status === 201 && success === true) {
       dispatchplaylist({

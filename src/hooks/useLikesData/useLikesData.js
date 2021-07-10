@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/auth-context";
@@ -17,9 +19,7 @@ export const useLikeData = () => {
           success,
           likeData: { videos },
         },
-      } = await axios.get(`https://videoLibraryServer.joyan11.repl.co/likes`, {
-        headers: { authorization: token },
-      });
+      } = await axios.get(`https://videoLibraryServer.joyan11.repl.co/likes`);
       if (status === 200 && success === true) {
         dispatchlike({
           type: "ADD_TO_LIKES",
@@ -35,7 +35,7 @@ export const useLikeData = () => {
   };
 
   useEffect(() => {
-    if (likeList.length === 0 && token) {
+    if (token) {
       getData();
     }
   }, [token]);

@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
@@ -7,8 +9,7 @@ export const removeFromLikes = async (videoId, dispatchlikes, token) => {
       status,
       data: { success },
     } = await axios.delete(
-      `https://videoLibraryServer.joyan11.repl.co/likes/${videoId}`,
-      { headers: { authorization: token } }
+      `https://videoLibraryServer.joyan11.repl.co/likes/${videoId}`
     );
     if (status === 200 && success === true) {
       dispatchlikes({ type: "REMOVE_FROM_LIKES", payload: videoId });

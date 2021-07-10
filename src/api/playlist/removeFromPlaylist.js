@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 export const removeFromPlaylist = async (
@@ -14,8 +16,7 @@ export const removeFromPlaylist = async (
         playlistData: { playlist },
       },
     } = await axios.delete(
-      `https://videoLibraryServer.joyan11.repl.co/playlists/${listId}/${videoId}`,
-      { headers: { authorization: token } }
+      `https://videoLibraryServer.joyan11.repl.co/playlists/${listId}/${videoId}`
     );
     if (status === 201 && success === true) {
       dispatchplaylist({

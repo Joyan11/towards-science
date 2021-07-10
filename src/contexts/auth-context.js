@@ -1,5 +1,12 @@
+/** @format */
+
 import axios from "axios";
 import { createContext, useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import {
+  setUniversalRequestToken,
+  setupAuthExceptionHandler,
+} from "./helpers/helpers";
 
 const authContext = createContext();
 
@@ -8,13 +15,24 @@ export const AuthProvider = ({ children }) => {
   const [errorMessage, setErrorMessage] = useState("");
   const [token, setToken] = useState(null);
   const [authLoader, setAuthloader] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem("token"));
     const user = JSON.parse(localStorage.getItem("user"));
+    setUniversalRequestToken(token);
+    setupAuthExceptionHandler(logOut, navigate);
     setToken(token);
     setUserData(user);
   }, []);
+
+  const logOut = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setToken(null);
+    setUserData("");
+    navigate("/login");
+  };
 
   const checkUserPass = async (userIdentifier, password) => {
     try {
@@ -33,6 +51,8 @@ export const AuthProvider = ({ children }) => {
         }
       );
       if (success === true && status === 200) {
+        setUniversalRequestToken(token);
+        setupAuthExceptionHandler(logOut, navigate);
         setToken(token);
         setUserData(userdata);
         localStorage.setItem("token", JSON.stringify(token));
@@ -40,7 +60,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error.message);
-      if (error?.response.status === 401) {
+      if (error?.response.status === 403) {
         setErrorMessage("Email/Password incorrect");
       }
     } finally {
@@ -60,6 +80,7 @@ export const AuthProvider = ({ children }) => {
         checkUserPass,
         authLoader,
         setAuthloader,
+        logOut,
       }}>
       {children}
     </authContext.Provider>

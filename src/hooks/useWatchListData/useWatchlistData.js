@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/auth-context";
@@ -19,8 +21,7 @@ export const useWatchlistData = () => {
           watchlistData: { videos },
         },
       } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/watchlist`,
-        { headers: { authorization: token } }
+        `https://videoLibraryServer.joyan11.repl.co/watchlist`
       );
       if (status === 200 && success === true) {
         dispatchwatchlist({

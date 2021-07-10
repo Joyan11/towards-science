@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 
 export const addToHistory = async (videoData, dispatchgeneral, token) => {
@@ -8,13 +10,9 @@ export const addToHistory = async (videoData, dispatchgeneral, token) => {
         success,
         historyData: { videos },
       },
-    } = await axios.post(
-      `https://videoLibraryServer.joyan11.repl.co/history`,
-      {
-        videos: videoData,
-      },
-      { headers: { authorization: token } }
-    );
+    } = await axios.post(`https://videoLibraryServer.joyan11.repl.co/history`, {
+      videos: videoData,
+    });
 
     if (status === 201 && success === true) {
       dispatchgeneral({ type: "ADD_TO_HISTORY", payload: videos });

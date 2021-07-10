@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { useEffect } from "react";
 import { useAuth } from "../../contexts/auth-context";
@@ -16,10 +18,7 @@ export const useHistoryData = () => {
           success,
           historyData: { videos },
         },
-      } = await axios.get(
-        `https://videoLibraryServer.joyan11.repl.co/history`,
-        { headers: { authorization: token } }
-      );
+      } = await axios.get(`https://videoLibraryServer.joyan11.repl.co/history`);
       if (status === 200 && success === true) {
         dispatchgeneral({
           type: "ADD_TO_HISTORY",

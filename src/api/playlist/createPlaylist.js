@@ -16,8 +16,7 @@ export const createPlaylist = async (dispatchplaylist, text, token) => {
           name: text,
           list: [],
         },
-      },
-      { headers: { authorization: token } }
+      }
     );
     if (status === 201 && success === true) {
       dispatchplaylist({ type: "CREATE_PLAY_LIST", payload: playlist });

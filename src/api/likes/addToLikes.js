@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
@@ -9,13 +11,9 @@ export const addToLikes = async (videoData, dispatchlikes, token) => {
         success,
         likeData: { videos },
       },
-    } = await axios.post(
-      `https://videoLibraryServer.joyan11.repl.co/likes`,
-      {
-        videos: videoData,
-      },
-      { headers: { authorization: token } }
-    );
+    } = await axios.post(`https://videoLibraryServer.joyan11.repl.co/likes`, {
+      videos: videoData,
+    });
 
     if (status === 201 && success === true) {
       dispatchlikes({ type: "ADD_TO_LIKES", payload: videos });

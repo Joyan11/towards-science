@@ -1,3 +1,5 @@
+/** @format */
+
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
@@ -13,8 +15,7 @@ export const addToWatchlist = async (videoData, dispatchwatchlist, token) => {
       `https://videoLibraryServer.joyan11.repl.co/watchlist`,
       {
         videos: videoData,
-      },
-      { headers: { authorization: token } }
+      }
     );
 
     if (status === 201 && success === true) {
