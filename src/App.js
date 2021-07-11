@@ -1,3 +1,5 @@
+/** @format */
+
 import "./App.css";
 import "./css/card-customize.css";
 import "react-toastify/dist/ReactToastify.css";
@@ -18,6 +20,7 @@ import {
   Signup,
   UserDetails,
 } from "./components/index";
+
 import {
   useHistoryData,
   useLikeData,
@@ -27,11 +30,12 @@ import {
 } from "./hooks";
 
 function App() {
-  useHistoryData();
-  usePlaylistData();
-  useWatchlistData();
   useVideoData();
+  usePlaylistData();
   useLikeData();
+  useHistoryData();
+  useWatchlistData();
+
   return (
     <div className="App">
       <main>

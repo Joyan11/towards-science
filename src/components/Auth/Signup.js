@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect } from "react";
 import { useAuth } from "../../contexts/auth-context";
 import { useState } from "react";
