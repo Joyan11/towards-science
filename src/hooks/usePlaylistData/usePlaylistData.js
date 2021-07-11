@@ -22,13 +22,15 @@ export const usePlaylistData = () => {
       } = await axios.get(
         `https://videoLibraryServer.joyan11.repl.co/playlists`
       );
-
       if (status === 200 && success === true) {
         dispatchplaylist({ type: "SAVE_TO_PLAYLIST", payload: playlist });
       }
     } catch (error) {
-      console.log(error.message);
-      console.log(error.stack);
+      if (error?.response.status) {
+        console.log("Playlist not created yet");
+      }
+      // console.log(error.message);
+      // console.log(error.stack);
     } finally {
       dispatchgeneral({ type: "SET_LOADER" });
     }

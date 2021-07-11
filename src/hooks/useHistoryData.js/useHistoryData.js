@@ -26,8 +26,9 @@ export const useHistoryData = () => {
         });
       }
     } catch (error) {
-      console.log(error.message);
-      console.log(error.stack);
+      if (error?.response.status) {
+        console.log("History list not created yet");
+      }
     } finally {
       dispatchgeneral({ type: "SET_LOADER" });
     }

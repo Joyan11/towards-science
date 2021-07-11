@@ -30,8 +30,9 @@ export const useWatchlistData = () => {
         });
       }
     } catch (error) {
-      console.log(error.message);
-      console.log(error.stack);
+      if (error?.response.status) {
+        console.log("watchlist not created yet");
+      }
     } finally {
       dispatchgeneral({ type: "SET_LOADER" });
     }

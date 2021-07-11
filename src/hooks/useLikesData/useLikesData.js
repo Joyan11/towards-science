@@ -27,15 +27,16 @@ export const useLikeData = () => {
         });
       }
     } catch (error) {
-      console.log(error.message);
-      console.log(error.stack);
+      if (error?.response.status) {
+        console.log("like list not created yet");
+      }
     } finally {
       dispatchgeneral({ type: "SET_LOADER" });
     }
   };
 
   useEffect(() => {
-    if (token) {
+    if (token && likeList.length === 0) {
       getData();
     }
   }, [token]);
