@@ -4,11 +4,9 @@
 
 Towards Science is a video libary application for lets you watch videos from the curated list. The project is built using Reactjs as the main framework for the front end with the help of react useReducer + contextAPI for glbal state management. User Authentication done with the help of jwt tokens. User has the ability to create playlists, like videos and more.
 
-```
-Live demo:  [towards-science](https://towards-science.netlify.app/).
+Live demo: [towards-science](https://towards-science.netlify.app/).
 
 backend : (https://github.com/Joyan11/video-library-server)
-```
 
 ## Features
 
