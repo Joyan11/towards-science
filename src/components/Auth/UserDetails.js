@@ -1,7 +1,6 @@
 /** @format */
 
 import React from "react";
-import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts/auth-context";
 import { useGeneralContext } from "../../contexts/general-context";
 import { useLike } from "../../contexts/like-context";

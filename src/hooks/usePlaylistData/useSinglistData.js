@@ -7,7 +7,6 @@ import { useGeneralContext } from "../../contexts/general-context";
 import { usePlaylist } from "../../contexts/playlist-context";
 
 export const useSinglelistData = (listId) => {
-  const { playList } = usePlaylist();
   const [playlist, setPlaylist] = useState();
   const { dispatchgeneral } = useGeneralContext();
   const { token } = useAuth();
