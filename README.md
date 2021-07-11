@@ -54,6 +54,6 @@ Clone/download the repository to run it on your local machine.
 
 `npm install`
 
-##### Run RabonaKick from the root directory.
+##### Run towards-science from the root directory.
 
 `npm start`
