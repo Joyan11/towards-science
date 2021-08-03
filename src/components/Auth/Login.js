@@ -17,6 +17,11 @@ export const Login = () => {
   const [userIndentifier, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const enterGuestDetails = () => {
+    setUsername("admin");
+    setPassword("Alohom0ra");
+  };
+
   const loginHandler = async (e) => {
     e.preventDefault();
     await checkUserPass(refineUserdata(userIndentifier), password);
@@ -39,6 +44,7 @@ export const Login = () => {
             type="userid"
             id="userid"
             placeholder="Enter Username"
+            value={userIndentifier}
             onChange={(e) => setUsername(e.target.value)}
             required></input>
           <small>{errorMessage}</small>
@@ -48,6 +54,7 @@ export const Login = () => {
           <input
             type="password"
             id="password"
+            value={password}
             placeholder="Enter Password"
             onChange={(e) => setPassword(e.target.value)}
             required></input>
@@ -63,10 +70,18 @@ export const Login = () => {
           Don't have an account? <Link to="/signup">Sign up</Link>
         </p>
       </form>
-      <div style={{ textAlign: "center", paddingTop: "1rem" }}>
-        Test Login Credentials
-        <p>email: admin</p>
-        <p>password: Alohom0ra</p>
+      <div
+        className="form-button"
+        style={{
+          textAlign: "center",
+          paddingTop: "1rem",
+          paddingBottom: "1rem",
+        }}>
+        <button
+          onClick={enterGuestDetails}
+          className="btn btn-primary btn--round ">
+          Enter Guest Details
+        </button>
       </div>
     </div>
   );
