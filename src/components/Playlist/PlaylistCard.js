@@ -34,7 +34,7 @@ export const PlaylistCard = () => {
         name={`Playlist/${playlistData ? playlistData.name : "..."}`}
       />
       <div className="video-list-section">
-        {loader && <Puff />}{" "}
+        {loader && playList.length === 0 && <Puff />}{" "}
         {playlistData?.list.map((playlistitem) => {
           return (
             <div
