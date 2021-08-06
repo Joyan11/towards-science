@@ -25,7 +25,7 @@ export const Login = () => {
   const loginHandler = async (e) => {
     e.preventDefault();
     await checkUserPass(refineUserdata(userIndentifier), password);
-    navigate(state?.from ? state.from : "/user");
+    navigate(state?.from ? state.from : "/");
   };
 
   useEffect(() => {
@@ -65,6 +65,11 @@ export const Login = () => {
             {authLoader ? <Dots /> : "Sign in"}
           </button>
         </div>
+        <div style={{ textAlign: "center", padding: "1rem" }}>
+          <button onClick={enterGuestDetails} className="guest-details">
+            Enter Guest Details
+          </button>
+        </div>
 
         <p className="form-message">
           Don't have an account? <Link to="/signup">Sign up</Link>
@@ -76,13 +81,7 @@ export const Login = () => {
           textAlign: "center",
           paddingTop: "1rem",
           paddingBottom: "1rem",
-        }}>
-        <button
-          onClick={enterGuestDetails}
-          className="btn btn-primary btn--round ">
-          Enter Guest Details
-        </button>
-      </div>
+        }}></div>
     </div>
   );
 };

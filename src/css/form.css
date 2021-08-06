@@ -1,3 +1,5 @@
+/** @format */
+
 :root {
   --success-color: #2ecc71;
   --error-color: #e743c3;
@@ -72,6 +74,18 @@ h2 {
 }
 .form-button .btn {
   background-color: #20639b;
+}
+
+.guest-details {
+  font-weight: bold;
+  cursor: pointer;
+  color: #20639b;
+  border: none;
+  background: none;
+}
+
+.guest-details:hover {
+  color: #163a57;
 }
 
 @media (max-width: 786px) {
