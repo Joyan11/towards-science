@@ -4,6 +4,7 @@ import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const addToWatchlist = async (videoData, dispatchwatchlist, token) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,

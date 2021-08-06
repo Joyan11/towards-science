@@ -8,6 +8,7 @@ export const removeFromWatchlist = async (
   dispatchwatchlist,
   token
 ) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,

@@ -4,6 +4,7 @@ import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const addToLikes = async (videoData, dispatchlikes, token) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,

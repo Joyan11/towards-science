@@ -1,8 +1,10 @@
 /** @format */
 
 import axios from "axios";
+import { toastMessages } from "../../utils/toastMessages";
 
 export const addToHistory = async (videoData, dispatchgeneral, token) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,

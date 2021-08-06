@@ -3,6 +3,7 @@
 import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 export const deletePlaylist = async (listId, dispatchplaylist, token) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,

@@ -8,6 +8,7 @@ export const removeFromPlaylist = async (
   dispatchplaylist,
   token
 ) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,

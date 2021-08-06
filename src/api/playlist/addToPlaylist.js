@@ -10,6 +10,7 @@ export const addToPlaylist = async (
   token
 ) => {
   try {
+    toastMessages("Please wait...");
     const {
       status,
       data: {

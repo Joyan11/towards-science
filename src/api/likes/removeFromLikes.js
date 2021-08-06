@@ -4,6 +4,7 @@ import axios from "axios";
 import { toastMessages } from "../../utils/toastMessages";
 
 export const removeFromLikes = async (videoId, dispatchlikes, token) => {
+  toastMessages("Please wait...");
   try {
     const {
       status,
