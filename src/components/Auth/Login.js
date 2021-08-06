@@ -22,10 +22,20 @@ export const Login = () => {
     setPassword("Alohom0ra");
   };
 
+  const navigator = (state) => {
+    console.log(state);
+    if (state === "/user") {
+      navigate("/");
+    } else {
+      navigate(state);
+    }
+  };
+
   const loginHandler = async (e) => {
     e.preventDefault();
     await checkUserPass(refineUserdata(userIndentifier), password);
-    navigate(state?.from ? state.from : "/");
+    // navigate(state?.from ? state.from : "/");
+    state?.from && navigator(state.from);
   };
 
   useEffect(() => {
