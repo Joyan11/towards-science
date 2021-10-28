@@ -1,0 +1,35 @@
+.video-list-section {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 2rem;
+  max-width: 100%;
+}
+
+.video-list-section .card {
+  margin: 2rem;
+}
+
+@media (max-width: 786px) {
+  .video-list-section {
+    margin: 0;
+  }
+
+  .video-list-section .card {
+    max-width: 100% !important;
+    margin: 0;
+  }
+
+  .video-list-section .card--image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .video-list-section .link {
+    width: 100%;
+  }
+
+  .video-list-section img {
+    width: 100%;
+    margin: 0;
+  }
+}

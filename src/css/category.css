@@ -1,0 +1,30 @@
+.filter-button {
+  margin-right: 1rem;
+  text-transform: capitalize;
+  font-size: 1.4rem;
+}
+
+.category-section {
+  max-width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  margin-top: 1.6rem;
+  margin-left: 0.7rem;
+  overflow-y: scroll;
+}
+
+.active {
+  background-color: #606060;
+  color: #fff;
+}
+
+.filter-button:hover {
+  background-color: #cac5c5;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .filter-button {
+    min-width: fit-content;
+  }
+}

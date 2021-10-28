@@ -1,0 +1,31 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import { removeFromWatchlist } from "../../api/watchlist/removeFromWatchlist";
+import { useAuth } from "../../contexts/auth-context";
+import { useWatchList } from "../../contexts/watchlist-context";
+import { thumbnail } from "../../utils/thumbnail";
+
+export const WatchCard = ({ watchlist }) => {
+  const { dispatchwatchlist } = useWatchList();
+  const { _id, name, category } = watchlist;
+  const { token } = useAuth();
+
+  return (
+    <div className="card card--verticle card--l video-card">
+      <figure className="card--image">
+        <span
+          onClick={() => removeFromWatchlist(_id, dispatchwatchlist, token)}>
+          {" "}
+          <ion-icon class="card--dismiss" name="close-circle"></ion-icon>
+        </span>{" "}
+        <Link to={`/${_id}`} className="link">
+          <img src={thumbnail(_id)} alt={name} />
+        </Link>
+      </figure>
+      <div className="card--body">
+        <span clasNames="card--title">{name}</span>
+        <p className="card--text text-capitalize">#{category} </p>
+      </div>
+    </div>
+  );
+};
